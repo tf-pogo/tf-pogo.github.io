@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://tf-pogo.github.io</id>
+    <title>Pogo个人主页</title>
+    <updated>2024-08-07T07:21:07.249Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://tf-pogo.github.io"/>
+    <link rel="self" href="https://tf-pogo.github.io/atom.xml"/>
+    <subtitle>我是破狗Pogo,目前在家学习,我精通c++ css html java python等单词的拼写,PS AE LR Davicni等软件的安装和卸载</subtitle>
+    <logo>https://tf-pogo.github.io/images/avatar.png</logo>
+    <icon>https://tf-pogo.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, Pogo个人主页</rights>
+    <entry>
+        <title type="html"><![CDATA[这个网站可以去拿奖吗???]]></title>
+        <id>https://tf-pogo.github.io/post/zhe-ge-wang-zhan-ke-yi-qu-na-jiang-ma/</id>
+        <link href="https://tf-pogo.github.io/post/zhe-ge-wang-zhan-ke-yi-qu-na-jiang-ma/">
+        </link>
+        <updated>2024-01-20T10:47:35.000Z</updated>
+        <content type="html"><![CDATA[<p>不想参赛,这个小网站也没啥含金量</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[testing]]></title>
+        <id>https://tf-pogo.github.io/post/testing/</id>
+        <link href="https://tf-pogo.github.io/post/testing/">
+        </link>
+        <updated>2023-07-30T15:59:00.000Z</updated>
+        <content type="html"><![CDATA[<p>一个知识越贫乏的人，越是拥有莫名的勇气和自豪感。知识越贫乏，你所相信的东西越绝对。因为你根本没有听过于此相对立的观点。​</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[hi！]]></title>
+        <id>https://tf-pogo.github.io/post/11111/</id>
+        <link href="https://tf-pogo.github.io/post/11111/">
+        </link>
+        <updated>2023-07-30T15:30:30.000Z</updated>
+        <content type="html"><![CDATA[<p>和许多学生一样，我是一个在家无聊搞了个网站的死宅男:  )</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[主播帅不帅]]></title>
+        <id>https://tf-pogo.github.io/post/huighiugyu/</id>
+        <link href="https://tf-pogo.github.io/post/huighiugyu/">
+        </link>
+        <updated>2023-07-30T14:38:34.000Z</updated>
+        <content type="html"><![CDATA[<p>扣1送地狱火</p>
+]]></content>
+    </entry>
+</feed>
