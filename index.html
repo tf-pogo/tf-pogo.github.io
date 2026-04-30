@@ -15,9 +15,10 @@
         /* 🌌 背景升级 */
         body {
             background: linear-gradient(135deg, #0f172a, #020617);
-            color: #e5e7eb;
+            color: #f1f5f9;  /* 更亮的文字颜色 */
             margin: 0;
-            font-family: 'Droid Serif', serif;
+            /* 换用系统无衬线字体，清晰易读 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
         }
 
         /* 🧠 中心卡片 */
@@ -55,7 +56,7 @@
             margin: 5px;
             display: inline-block;
             transition: 0.2s;
-            color: #e5e7eb;
+            color: #f8fafc;  /* 菜单文字更亮 */
             text-decoration: none;
         }
 
@@ -66,7 +67,7 @@
 
         /* 📦 文章卡片 */
         .post {
-            background: rgba(255,255,255,0.04);
+            background: rgba(255,255,255,0.08);  /* 卡片背景稍微亮一点，增强对比 */
             padding: 15px;
             border-radius: 15px;
             margin-bottom: 15px;
@@ -89,6 +90,7 @@
         .post-info {
             font-size: 14px;
             opacity: 0.7;
+            color: #cbd5e1;  /* 日期颜色更明显 */
         }
 
         /* ✨ 动画 */
@@ -124,21 +126,27 @@
         }
 
         .social-container a {
-            color: #e5e7eb;
+            color: #cbd5e1;  /* 图标颜色柔和但可见 */
             font-size: 24px;
             margin-right: 12px;
             text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .social-container a:hover {
+            color: #ffffff;  /* 鼠标悬停时更亮 */
         }
 
         .site-footer {
             margin-top: 30px;
             font-size: 14px;
             opacity: 0.6;
+            color: #cbd5e1;
             text-align: center;
         }
 
         .site-footer a {
-            color: #60a5fa;
+            color: #94a3b8;
             text-decoration: none;
         }
 
