@@ -5,229 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pogo个人主页</title>
     <link rel="shortcut icon" href="https://tf-pogo.github.io/favicon.ico?v=1723015263149">
+    <!-- 图标库引用 -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-gradient: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%);
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.5);
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --accent-color: #6366f1;
-            --card-shadow: 0 8px 32px rgba(31, 38, 135, 0.05);
-        }
-
-        body {
-            background: #f1f5f9;
-            background-image: var(--bg-gradient);
-            background-attachment: fixed;
-            color: var(--text-primary);
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
-            min-height: 100vh;
-        }
-
-        .main {
-            display: flex;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-
-        .main-content {
-            max-width: 720px;
-            width: 100%;
-        }
-
-        /* 核心高斯模糊卡片 */
-        .glass-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            padding: 40px;
-            box-shadow: var(--card-shadow);
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        /* 头部设计 */
-        .site-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 4px solid #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .avatar:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .site-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin: 15px 0 8px;
-            background: linear-gradient(90deg, #4f46e5, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .site-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        /* 导航菜单 */
-        .menu-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .menu {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 8px 20px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 1px solid rgba(0,0,0,0.03);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .menu:hover {
-            background: var(--accent-color);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
-        }
-
-        /* 文章卡片列表 */
-        .post-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .post {
-            background: rgba(255, 255, 255, 0.3);
-            padding: 20px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            transition: all 0.3s;
-        }
-
-        .post:hover {
-            background: rgba(255, 255, 255, 0.8);
-            transform: scale(1.02);
-            border-color: var(--accent-color);
-        }
-
-        .post a {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .post-title {
-            margin: 0 0 8px;
-            font-size: 1.15rem;
-            font-weight: 700;
-        }
-
-        .post-info {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            display: flex;
-            gap: 15px;
-        }
-
-        /* 社交图标 */
-        .social-container {
-            margin-top: 20px;
-        }
-
-        .social-container a {
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            margin: 0 12px;
-            transition: 0.3s;
-        }
-
-        .social-container a:hover {
-            color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        /* 版权信息 */
-        .site-footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            opacity: 0.6;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 600px) {
-            .glass-container { padding: 30px 20px; }
-            .site-title { font-size: 1.5rem; }
-        }
-    </style>
+    <!-- 核心样式引用：确保此路径正确 -->
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
     <div class="main">
         <div class="main-content">
             <div class="glass-container">
-                <!-- 头部 -->
-                <div class="site-header">
+                <!-- 个人信息头部 -->
+                <div class="site-header" style="text-align: center; margin-bottom: 35px;">
                     <a href="https://tf-pogo.github.io">
-                        <img class="avatar" src="https://tf-pogo.github.io/images/avatar.png?v=1723015263149" alt="头像">
+                        <img class="avatar" src="https://tf-pogo.github.io/images/avatar.png?v=1723015263149" alt="头像" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.4s;">
                     </a>
-                    <h1 class="site-title">Pogo个人主页</h1>
-                    <p class="site-description">
-                        我是破狗Pogo, 目前在云南。<br>
+                    <h1 class="site-title" style="font-size: 1.8rem; font-weight: 800; margin: 15px 0 8px; background: linear-gradient(90deg, #4f46e5, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Pogo个人主页</h1>
+                    <p class="site-description" style="color: #64748b; font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">
+                        我是破狗Pogo，目前在云南。<br>
                         精通 C++ / CSS / Java 等单词的拼写，<br>
                         熟练掌握 PS / AE / DaVinci 等软件的安装与卸载。
                     </p>
 
-                    <div class="menu-container">
+                    <!-- 快捷导航 -->
+                    <div class="menu-container" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px;">
                         <a href="https://space.bilibili.com/502798845" class="menu" target="_blank"><i class="ri-bilibili-line"></i> Bilibili</a>
                         <a href="https://www.youtube.com/channel/UCNw0HE2nqO0UhuviqCkYinQ" class="menu" target="_blank"><i class="ri-youtube-line"></i> YouTube</a>
                         <a href="http://wpa.qq.com/msgrd?v=3&uin=137908943&site=qq&menu=yes" class="menu" target="_blank"><i class="ri-qq-line"></i> QQ</a>
                         <a href="https://t.me/19164173149" class="menu" target="_blank"><i class="ri-telegram-line"></i> Telegram</a>
                     </div>
 
-                    <div class="social-container">
-                        <a href="https://github.com/tf-pogo" target="_blank"><i class="ri-github-line"></i></a>
-                        <a href="https://x.com/pity45087346" target="_blank"><i class="ri-twitter-line"></i></a>
+                    <!-- 社交媒体链接 -->
+                    <div class="social-container" style="margin-top: 20px;">
+                        <a href="https://github.com/tf-pogo" target="_blank" style="color: #64748b; font-size: 1.5rem; margin: 0 12px; transition: 0.3s;"><i class="ri-github-line"></i></a>
+                        <a href="https://x.com/pity45087346" target="_blank" style="color: #64748b; font-size: 1.5rem; margin: 0 12px; transition: 0.3s;"><i class="ri-twitter-line"></i></a>
                     </div>
                 </div>
 
-                <!-- 文章列表（还原真实链接） -->
-                <div class="post-container">
+                <!-- 文章列表（已恢复真实链接） -->
+                <div class="post-container" style="display: flex; flex-direction: column; gap: 15px;">
                     <article class="post">
                         <a href="https://tf-pogo.github.io/post/zhe-ge-wang-zhan-ke-yi-qu-na-jiang-ma/">
-                            <h2 class="post-title">这个网站可以去拿奖吗???</h2>
-                            <div class="post-info">
+                            <h2 class="post-title" style="margin: 0 0 8px; font-size: 1.15rem; font-weight: 700;">这个网站可以去拿奖吗???</h2>
+                            <div class="post-info" style="font-size: 0.8rem; color: #64748b; display: flex; gap: 15px;">
                                 <span>2024-01-20</span>
                                 <span>1 min read</span>
                             </div>
@@ -236,8 +55,8 @@
 
                     <article class="post">
                         <a href="https://tf-pogo.github.io/post/testing/">
-                            <h2 class="post-title">testing</h2>
-                            <div class="post-info">
+                            <h2 class="post-title" style="margin: 0 0 8px; font-size: 1.15rem; font-weight: 700;">testing</h2>
+                            <div class="post-info" style="font-size: 0.8rem; color: #64748b; display: flex; gap: 15px;">
                                 <span>2023-07-30</span>
                                 <span>1 min read</span>
                             </div>
@@ -246,8 +65,8 @@
 
                     <article class="post">
                         <a href="https://tf-pogo.github.io/post/11111/">
-                            <h2 class="post-title">hi！</h2>
-                            <div class="post-info">
+                            <h2 class="post-title" style="margin: 0 0 8px; font-size: 1.15rem; font-weight: 700;">hi！</h2>
+                            <div class="post-info" style="font-size: 0.8rem; color: #64748b; display: flex; gap: 15px;">
                                 <span>2023-07-30</span>
                                 <span>1 min read</span>
                             </div>
@@ -256,8 +75,8 @@
 
                     <article class="post">
                         <a href="https://tf-pogo.github.io/post/huighiugyu/">
-                            <h2 class="post-title">主播帅不帅</h2>
-                            <div class="post-info">
+                            <h2 class="post-title" style="margin: 0 0 8px; font-size: 1.15rem; font-weight: 700;">主播帅不帅</h2>
+                            <div class="post-info" style="font-size: 0.8rem; color: #64748b; display: flex; gap: 15px;">
                                 <span>2023-07-30</span>
                                 <span>1 min read</span>
                             </div>
@@ -266,7 +85,7 @@
                 </div>
 
                 <!-- 页脚 -->
-                <div class="site-footer">
+                <div class="site-footer" style="margin-top: 40px; text-align: center; font-size: 0.8rem; color: #64748b; opacity: 0.6;">
                     © 2026 Pogo's Personal Space.
                 </div>
             </div>
