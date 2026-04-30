@@ -3,38 +3,35 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pogo个人主页 | Creative & Tech</title>
+    <title>Pogo个人主页</title>
     <link rel="shortcut icon" href="https://tf-pogo.github.io/favicon.ico?v=1723015263149">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
     
     <style>
         :root {
-            /* 浅色主题配色 */
-            --bg-color: #f0f2f5;
-            --bg-gradient: linear-gradient(135deg, #e0e7ff 0%, #f1f5f9 100%);
-            --glass-bg: rgba(255, 255, 255, 0.6); /* 高斯模糊背后的底色 */
-            --glass-border: rgba(255, 255, 255, 0.4);
-            --accent-color: #4f46e5; /* 靛蓝色点缀 */
+            --bg-gradient: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.5);
             --text-primary: #1e293b;
             --text-secondary: #64748b;
-            --blur-intensity: 12px; /* 高斯模糊强度 */
+            --accent-color: #6366f1;
+            --card-shadow: 0 8px 32px rgba(31, 38, 135, 0.05);
         }
 
         body {
-            background: var(--bg-color);
+            background: #f1f5f9;
             background-image: var(--bg-gradient);
             background-attachment: fixed;
             color: var(--text-primary);
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            min-height: 100vh;
         }
 
         .main {
             display: flex;
             justify-content: center;
-            padding: 60px 20px;
-            min-height: 100vh;
+            padding: 40px 20px;
         }
 
         .main-content {
@@ -42,21 +39,22 @@
             width: 100%;
         }
 
-        /* ✨ 高斯模糊核心遮罩卡片 */
-        .glass-card {
+        /* 核心高斯模糊卡片 */
+        .glass-container {
             background: var(--glass-bg);
-            backdrop-filter: blur(var(--blur-intensity));
-            -webkit-backdrop-filter: blur(var(--blur-intensity)); /* 兼容Safari */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 40px;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.07);
+            box-shadow: var(--card-shadow);
+            animation: fadeIn 0.8s ease-out;
         }
 
-        /* 头部区域 */
+        /* 头部设计 */
         .site-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         .avatar {
@@ -64,20 +62,21 @@
             height: 100px;
             border-radius: 50%;
             border: 4px solid #fff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .avatar:hover {
-            transform: scale(1.08) rotate(3deg);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .site-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            margin: 20px 0 10px;
-            letter-spacing: -0.5px;
-            color: var(--text-primary);
+            margin: 15px 0 8px;
+            background: linear-gradient(90deg, #4f46e5, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .site-description {
@@ -87,57 +86,75 @@
             margin-bottom: 25px;
         }
 
-        /* 菜单按钮 */
+        /* 导航菜单 */
         .menu-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 30px;
         }
 
         .menu {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 8px 18px;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 8px 20px;
             border-radius: 12px;
             font-size: 0.9rem;
-            font-weight: 500;
             color: var(--text-primary);
             text-decoration: none;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .menu:hover {
             background: var(--accent-color);
             color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
         }
 
-        /* 文章列表高斯模糊处理 */
+        /* 文章卡片列表 */
         .post-container {
-            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
         .post {
-            background: rgba(255, 255, 255, 0.4); /* 更透明的底层 */
+            background: rgba(255, 255, 255, 0.3);
             padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s;
         }
 
         .post:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: scale(1.01);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.02);
+            border-color: var(--accent-color);
         }
 
-        .post a { text-decoration: none; color: inherit; }
-        .post-title { margin: 0 0 8px; font-size: 1.2rem; }
-        .post-info { font-size: 0.8rem; color: var(--text-secondary); }
+        .post a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .post-title {
+            margin: 0 0 8px;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .post-info {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 15px;
+        }
 
         /* 社交图标 */
         .social-container {
@@ -146,91 +163,111 @@
 
         .social-container a {
             color: var(--text-secondary);
-            font-size: 1.4rem;
-            margin: 0 10px;
-            transition: color 0.2s;
+            font-size: 1.5rem;
+            margin: 0 12px;
+            transition: 0.3s;
         }
 
         .social-container a:hover {
             color: var(--accent-color);
+            transform: translateY(-3px);
         }
 
-        /* 底部版权 - 已移除Gridea */
+        /* 版权信息 */
         .site-footer {
             margin-top: 40px;
             text-align: center;
             font-size: 0.8rem;
             color: var(--text-secondary);
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
-        /* 动画 */
-        @keyframes fadeInUp {
+        @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .glass-card { animation: fadeInUp 0.8s ease-out; }
-
-        @media (max-width: 480px) {
-            .glass-card { padding: 25px 15px; }
-            .site-title { font-size: 1.6rem; }
+        @media (max-width: 600px) {
+            .glass-container { padding: 30px 20px; }
+            .site-title { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
     <div class="main">
         <div class="main-content">
-            <div class="glass-card">
-                <!-- 头部区域 -->
+            <div class="glass-container">
+                <!-- 头部 -->
                 <div class="site-header">
-                    <img class="avatar" src="https://tf-pogo.github.io/images/avatar.png?v=1723015263149" alt="Pogo">
-                    <h1 class="site-title">Pogo</h1>
+                    <a href="https://tf-pogo.github.io">
+                        <img class="avatar" src="https://tf-pogo.github.io/images/avatar.png?v=1723015263149" alt="头像">
+                    </a>
+                    <h1 class="site-title">Pogo个人主页</h1>
                     <p class="site-description">
-                        🏠 目前在云南修行中... <br>
+                        我是破狗Pogo, 目前在云南。<br>
                         精通 C++ / CSS / Java 等单词的拼写，<br>
-                        主修 Adobe 全家桶及 DaVinci 的安装与卸载。
+                        熟练掌握 PS / AE / DaVinci 等软件的安装与卸载。
                     </p>
 
                     <div class="menu-container">
-                        <a href="https://space.bilibili.com/502798845" class="menu" target="_blank">Bilibili</a>
-                        <a href="https://www.youtube.com" class="menu" target="_blank">YouTube</a>
-                        <a href="https://t.me/19164173149" class="menu" target="_blank">Telegram</a>
+                        <a href="https://space.bilibili.com/502798845" class="menu" target="_blank"><i class="ri-bilibili-line"></i> Bilibili</a>
+                        <a href="https://www.youtube.com/channel/UCNw0HE2nqO0UhuviqCkYinQ" class="menu" target="_blank"><i class="ri-youtube-line"></i> YouTube</a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=137908943&site=qq&menu=yes" class="menu" target="_blank"><i class="ri-qq-line"></i> QQ</a>
+                        <a href="https://t.me/19164173149" class="menu" target="_blank"><i class="ri-telegram-line"></i> Telegram</a>
                     </div>
 
                     <div class="social-container">
                         <a href="https://github.com/tf-pogo" target="_blank"><i class="ri-github-line"></i></a>
-                        <a href="https://x.com" target="_blank"><i class="ri-twitter-line"></i></a>
+                        <a href="https://x.com/pity45087346" target="_blank"><i class="ri-twitter-line"></i></a>
                     </div>
                 </div>
 
-                <!-- 内容列表 -->
+                <!-- 文章列表（还原真实链接） -->
                 <div class="post-container">
                     <article class="post">
-                        <a href="#">
+                        <a href="https://tf-pogo.github.io/post/zhe-ge-wang-zhan-ke-yi-qu-na-jiang-ma/">
                             <h2 class="post-title">这个网站可以去拿奖吗???</h2>
+                            <div class="post-info">
+                                <span>2024-01-20</span>
+                                <span>1 min read</span>
+                            </div>
                         </a>
-                        <div class="post-info">2024-01-20 · 1 min read</div>
                     </article>
 
                     <article class="post">
-                        <a href="#">
-                            <h2 class="post-title">关于安卓 A/B 分区刷机的一些碎碎念</h2>
+                        <a href="https://tf-pogo.github.io/post/testing/">
+                            <h2 class="post-title">testing</h2>
+                            <div class="post-info">
+                                <span>2023-07-30</span>
+                                <span>1 min read</span>
+                            </div>
                         </a>
-                        <div class="post-info">2024-04-15 · 5 min read</div>
                     </article>
 
                     <article class="post">
-                        <a href="#">
-                            <h2 class="post-title">JDM 补完计划：为什么 R32 是战神</h2>
+                        <a href="https://tf-pogo.github.io/post/11111/">
+                            <h2 class="post-title">hi！</h2>
+                            <div class="post-info">
+                                <span>2023-07-30</span>
+                                <span>1 min read</span>
+                            </div>
                         </a>
-                        <div class="post-info">2024-03-10 · 3 min read</div>
+                    </article>
+
+                    <article class="post">
+                        <a href="https://tf-pogo.github.io/post/huighiugyu/">
+                            <h2 class="post-title">主播帅不帅</h2>
+                            <div class="post-info">
+                                <span>2023-07-30</span>
+                                <span>1 min read</span>
+                            </div>
+                        </a>
                     </article>
                 </div>
 
-                <!-- 底部 -->
+                <!-- 页脚 -->
                 <div class="site-footer">
-                    © 2026 Pogo's Personal Space. Designed by Pogo.
+                    © 2026 Pogo's Personal Space.
                 </div>
             </div>
         </div>
