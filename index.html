@@ -3,286 +3,235 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pogo个人主页 | Beginner Developer</title>
+    <title>Pogo个人主页 | Creative & Tech</title>
     <link rel="shortcut icon" href="https://tf-pogo.github.io/favicon.ico?v=1723015263149">
-    <!-- 图标库 -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
     
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #0f172a, #020617);
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --accent-blue: #3b82f6;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            /* 浅色主题配色 */
+            --bg-color: #f0f2f5;
+            --bg-gradient: linear-gradient(135deg, #e0e7ff 0%, #f1f5f9 100%);
+            --glass-bg: rgba(255, 255, 255, 0.6); /* 高斯模糊背后的底色 */
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --accent-color: #4f46e5; /* 靛蓝色点缀 */
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --blur-intensity: 12px; /* 高斯模糊强度 */
         }
 
         body {
-            background: var(--bg-gradient);
+            background: var(--bg-color);
+            background-image: var(--bg-gradient);
             background-attachment: fixed;
             color: var(--text-primary);
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         .main {
             display: flex;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
             min-height: 100vh;
         }
 
         .main-content {
-            max-width: 700px;
+            max-width: 720px;
             width: 100%;
+        }
+
+        /* ✨ 高斯模糊核心遮罩卡片 */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-intensity));
+            -webkit-backdrop-filter: blur(var(--blur-intensity)); /* 兼容Safari */
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.07);
         }
 
         /* 头部区域 */
         .site-header {
             text-align: center;
             margin-bottom: 40px;
-            animation: fadeInDown 0.8s ease;
         }
 
         .avatar {
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            padding: 5px;
-            transition: var(--transition);
-            cursor: pointer;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
         .avatar:hover {
-            transform: rotate(5deg) scale(1.1);
-            border-color: var(--accent-blue);
+            transform: scale(1.08) rotate(3deg);
         }
 
         .site-title {
-            font-size: 2.2rem;
-            margin: 15px 0 10px;
-            background: linear-gradient(90deg, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 20px 0 10px;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
         }
 
         .site-description {
             color: var(--text-secondary);
             font-size: 0.95rem;
-            max-width: 500px;
-            margin: 0 auto 20px;
-            opacity: 0.8;
-        }
-
-        /* 标签云板块 */
-        .tag-container {
-            margin-bottom: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .tag {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            border: 1px solid transparent;
-            transition: var(--transition);
-        }
-
-        .tag:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: var(--accent-blue);
-            color: white;
+            line-height: 1.6;
+            margin-bottom: 25px;
         }
 
         /* 菜单按钮 */
         .menu-container {
-            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
         }
 
         .menu {
-            background: var(--card-bg);
-            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 18px;
             border-radius: 12px;
-            margin: 5px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
+            font-size: 0.9rem;
+            font-weight: 500;
             color: var(--text-primary);
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .menu:hover {
-            background: var(--accent-blue);
+            background: var(--accent-color);
+            color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
         }
 
-        /* 文章卡片 */
+        /* 文章列表高斯模糊处理 */
         .post-container {
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         .post {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 24px;
-            border-radius: 18px;
-            margin-bottom: 20px;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            animation: fadeInUp 0.8s ease backwards;
+            background: rgba(255, 255, 255, 0.4); /* 更透明的底层 */
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
         }
 
         .post:hover {
-            transform: translateY(-6px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(59, 130, 246, 0.4);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(59, 130, 246, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.01);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
         .post a { text-decoration: none; color: inherit; }
-        .post-title { margin: 0 0 10px; font-size: 1.3rem; color: #fff; }
-        .post-info { font-size: 0.85rem; color: var(--text-secondary); opacity: 0.6; }
+        .post-title { margin: 0 0 8px; font-size: 1.2rem; }
+        .post-info { font-size: 0.8rem; color: var(--text-secondary); }
 
         /* 社交图标 */
         .social-container {
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
         .social-container a {
             color: var(--text-secondary);
-            font-size: 1.6rem;
-            margin: 0 12px;
-            transition: var(--transition);
+            font-size: 1.4rem;
+            margin: 0 10px;
+            transition: color 0.2s;
         }
 
         .social-container a:hover {
-            color: #fff;
-            transform: scale(1.2);
+            color: var(--accent-color);
         }
 
-        /* 页脚 */
+        /* 底部版权 - 已移除Gridea */
         .site-footer {
-            margin-top: 60px;
-            padding-bottom: 40px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+            margin-top: 40px;
             text-align: center;
-            opacity: 0.5;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
         }
 
-        .site-footer a { color: inherit; text-decoration: none; }
-
-        /* 动画定义 */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* 动画 */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 响应式适配 */
-        @media (max-width: 600px) {
-            .site-title { font-size: 1.8rem; }
-            .menu { padding: 8px 15px; font-size: 0.9rem; }
-            .post { padding: 18px; }
+        .glass-card { animation: fadeInUp 0.8s ease-out; }
+
+        @media (max-width: 480px) {
+            .glass-card { padding: 25px 15px; }
+            .site-title { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
     <div class="main">
         <div class="main-content">
-            <!-- 头部区域 -->
-            <div class="site-header">
-                <a href="https://tf-pogo.github.io">
-                    <img class="avatar" src="https://tf-pogo.github.io/images/avatar.png?v=1723015263149" alt="头像">
-                </a>
-                <h1 class="site-title">Pogo个人主页</h1>
-                <p class="site-description">
-                    我是破狗Pogo，目前在家学习。精通 C++ / Java / Python 等单词的拼写，熟练掌握各类生产力软件的安装与卸载。
-                </p>
+            <div class="glass-card">
+                <!-- 头部区域 -->
+                <div class="site-header">
+                    <img class="avatar" src="https://tf-pogo.github.io/images/avatar.png?v=1723015263149" alt="Pogo">
+                    <h1 class="site-title">Pogo</h1>
+                    <p class="site-description">
+                        🏠 目前在云南修行中... <br>
+                        精通 C++ / CSS / Java 等单词的拼写，<br>
+                        主修 Adobe 全家桶及 DaVinci 的安装与卸载。
+                    </p>
 
-                <!-- 兴趣标签云 -->
-                <div class="tag-container">
-                    <span class="tag"># Android Modding</span>
-                    <span class="tag"># PixelOS</span>
-                    <span class="tag"># JDM Culture</span>
-                    <span class="tag"># R32 Skyline</span>
-                    <span class="tag"># Progressive Rock</span>
-                    <span class="tag"># Pink Floyd</span>
+                    <div class="menu-container">
+                        <a href="https://space.bilibili.com/502798845" class="menu" target="_blank">Bilibili</a>
+                        <a href="https://www.youtube.com" class="menu" target="_blank">YouTube</a>
+                        <a href="https://t.me/19164173149" class="menu" target="_blank">Telegram</a>
+                    </div>
+
+                    <div class="social-container">
+                        <a href="https://github.com/tf-pogo" target="_blank"><i class="ri-github-line"></i></a>
+                        <a href="https://x.com" target="_blank"><i class="ri-twitter-line"></i></a>
+                    </div>
                 </div>
 
-                <!-- 导航链接 -->
-                <div class="menu-container">
-                    <a href="https://space.bilibili.com/502798845" class="menu" target="_blank"><i class="ri-bilibili-line"></i> Bilibili</a>
-                    <a href="https://www.youtube.com/channel/UCNw0HE2nqO0UhuviqCkYinQ" class="menu" target="_blank"><i class="ri-youtube-line"></i> YouTube</a>
-                    <a href="https://t.me/19164173149" class="menu" target="_blank"><i class="ri-telegram-line"></i> TG Channel</a>
-                    <a href="http://wpa.qq.com/msgrd?v=3&uin=137908943&site=qq&menu=yes" class="menu" target="_blank"><i class="ri-qq-line"></i> Contact</a>
+                <!-- 内容列表 -->
+                <div class="post-container">
+                    <article class="post">
+                        <a href="#">
+                            <h2 class="post-title">这个网站可以去拿奖吗???</h2>
+                        </a>
+                        <div class="post-info">2024-01-20 · 1 min read</div>
+                    </article>
+
+                    <article class="post">
+                        <a href="#">
+                            <h2 class="post-title">关于安卓 A/B 分区刷机的一些碎碎念</h2>
+                        </a>
+                        <div class="post-info">2024-04-15 · 5 min read</div>
+                    </article>
+
+                    <article class="post">
+                        <a href="#">
+                            <h2 class="post-title">JDM 补完计划：为什么 R32 是战神</h2>
+                        </a>
+                        <div class="post-info">2024-03-10 · 3 min read</div>
+                    </article>
                 </div>
 
-                <div class="social-container">
-                    <a href="https://github.com/tf-pogo" target="_blank" title="GitHub"><i class="ri-github-line"></i></a>
-                    <a href="https://x.com/pity45087346" target="_blank" title="Twitter/X"><i class="ri-twitter-line"></i></a>
+                <!-- 底部 -->
+                <div class="site-footer">
+                    © 2026 Pogo's Personal Space. Designed by Pogo.
                 </div>
-            </div>
-
-            <!-- 文章列表 -->
-            <div class="post-container">
-                <article class="post" style="animation-delay: 0.1s;">
-                    <a href="#">
-                        <h2 class="post-title">⚡ 某次惊心动魄的 A/B 分区刷机记录</h2>
-                    </a>
-                    <div class="post-info">
-                        <span>2024-04-20</span> • <span>5 min read</span>
-                    </div>
-                </article>
-
-                <article class="post" style="animation-delay: 0.2s;">
-                    <a href="#">
-                        <h2 class="post-title">🏎️ 为什么 R32 是永远的 JDM 战神？</h2>
-                    </a>
-                    <div class="post-info">
-                        <span>2024-03-15</span> • <span>3 min read</span>
-                    </div>
-                </article>
-
-                <article class="post" style="animation-delay: 0.3s;">
-                    <a href="#">
-                        <h2 class="post-title">🎸 聊聊 Pink Floyd：从《月之暗面》到前摇之光</h2>
-                    </a>
-                    <div class="post-info">
-                        <span>2024-02-10</span> • <span>8 min read</span>
-                    </div>
-                </article>
-                
-                <article class="post" style="animation-delay: 0.4s;">
-                    <a href="#">
-                        <h2 class="post-title">这个网站可以去拿奖吗???</h2>
-                    </a>
-                    <div class="post-info">
-                        <span>2024-01-20</span> • <span>1 min read</span>
-                    </div>
-                </article>
-            </div>
-
-            <!-- 页脚 -->
-            <div class="site-footer">
-                Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> & <a href="#">Pogo</a>
-                <br>
-                © 2026 Pogo's Lab. All Rights Reserved.
             </div>
         </div>
     </div>
