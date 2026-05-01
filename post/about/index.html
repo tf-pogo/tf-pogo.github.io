@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>关于我 - Pogo个人主页</title>
+    
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <style>
+        .article-container { max-width: 700px; }
+        .back-btn { display: inline-flex; align-items: center; gap: 5px; margin-bottom: 25px; color: #4f46e5; font-weight: 600; transition: transform 0.3s ease; }
+        .back-btn:hover { transform: translateX(-5px); }
+        .article-content { line-height: 1.8; color: #334155; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.05); }
+        .article-content p { margin-bottom: 15px; }
+        
+        /* 针对关于页面的正文排版优化 */
+        .article-content h2 { margin: 25px 0 15px; font-size: 1.3rem; color: #1e293b; }
+        
+        /* 给引用块加上非常好看的左侧高亮样式 */
+        .article-content blockquote {
+            border-left: 4px solid #4f46e5;
+            padding: 12px 20px;
+            background: rgba(79, 70, 229, 0.05);
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 25px;
+            color: #475569;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-container article-container">
+        
+        <a href="../../index.html" class="back-btn">
+            <i class="ri-arrow-left-line"></i> 返回首页
+        </a>
+        
+        <h1 class="site-title" style="font-size: 1.8rem; margin: 0 0 10px;">关于</h1>
+        
+        <div class="post-info">
+            <span><i class="ri-calendar-line"></i> 2019-01-25</span>
+            <span><i class="ri-user-line"></i> Pogo</span>
+        </div>
+
+        <div class="article-content">
+            <blockquote>
+                <p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+            </blockquote>
+            
+            <h2>🏠 关于本站</h2>
+            <p>这是我自己手搓的全新毛玻璃质感个人主页，用来记录生活和折腾一些好玩的技术。</p>
+            
+            <h2>👨‍💻 博主是谁</h2>
+            <p>我是破狗 Pogo，目前在家学习。精通 C++ / CSS / HTML / Java / Python 等单词的拼写，熟练掌握 PS / AE / LR / DaVinci 等软件的安装和卸载。</p>
+            
+            <h2>⛹ 兴趣爱好</h2>
+            <p>（你可以后续在这里填上你的爱好，比如打游戏、看电影、搞搞前端等）</p>
+            
+            <h2>📬 联系我呀</h2>
+            <p>你可以通过主页的 B站、YouTube、QQ 或 Telegram 找到我哦！</p>
+        </div>
+        
+    </div>
+</body>
+</html>

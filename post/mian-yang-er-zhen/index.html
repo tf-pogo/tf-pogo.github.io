@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>高三绵阳二诊成绩复盘 & 历史轨迹追踪 - Pogo个人主页</title>
+    
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <style>
+        .article-container { max-width: 800px !important; margin: 0 auto !important; display: block !important; position: relative; }
+        .back-btn { display: inline-flex; align-items: center; gap: 5px; margin-bottom: 25px; color: #4f46e5; font-weight: 600; transition: transform 0.3s ease; }
+        .back-btn:hover { transform: translateX(-5px); }
+        .article-content { line-height: 1.8; color: #334155; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.05); }
+        body.dark-mode .article-content { color: #cbd5e1; border-color: rgba(255,255,255,0.1); }
+        .article-content h2 { margin: 30px 0 15px; font-size: 1.4rem; color: #1e293b; }
+        body.dark-mode .article-content h2 { color: #f8fafc; }
+        
+        /* 成绩表格样式 */
+        .score-table { width: 100%; border-collapse: collapse; margin: 25px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .score-table th, .score-table td { padding: 12px 15px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .score-table th { background: rgba(79, 70, 229, 0.1); color: #4f46e5; font-weight: bold; }
+        .score-table tr:hover { background: rgba(255,255,255,0.5); }
+        body.dark-mode .score-table { box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        body.dark-mode .score-table th, body.dark-mode .score-table td { border-bottom: 1px solid rgba(255,255,255,0.05); }
+        body.dark-mode .score-table th { background: rgba(99, 102, 241, 0.2); color: #818cf8; }
+        body.dark-mode .score-table tr:hover { background: rgba(30, 41, 59, 0.8); }
+
+        /* 🌟 可以点击的学科样式 */
+        .subject-link {
+            color: #ec4899;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-style: dashed;
+            transition: all 0.3s ease;
+        }
+        .subject-link:hover { color: #4f46e5; background: rgba(79, 70, 229, 0.1); border-radius: 6px; padding: 2px 8px;}
+        body.dark-mode .subject-link { color: #f472b6; }
+        body.dark-mode .subject-link:hover { color: #818cf8; background: rgba(129, 140, 248, 0.2); }
+
+        /* 🌟 弹窗（Modal）毛玻璃样式 */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(5px);
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 9999;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        
+        .modal-content {
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
+            padding: 30px; border-radius: 20px; max-width: 400px; width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            transform: translateY(20px); transition: all 0.3s ease;
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        body.dark-mode .modal-content { background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.1); color: #f8fafc; }
+
+        .close-btn { margin-top: 20px; display: block; width: 100%; padding: 10px; background: #4f46e5; color: white; text-align: center; border-radius: 10px; cursor: pointer; font-weight: bold; }
+        .trend-up { color: #10b981; font-weight: bold; } /* 进步绿色 */
+        .trend-down { color: #ef4444; font-weight: bold; } /* 退步红色 */
+    </style>
+</head>
+<body>
+    <div class="glass-container article-container">
+        <a href="../../index.html" class="back-btn"><i class="ri-arrow-left-line"></i> 返回首页</a>
+        
+        <h1 class="site-title" style="font-size: 1.8rem; margin: 0 0 10px;">绵阳二诊成绩复盘 & 学科追踪</h1>
+        <div class="post-info">
+            <span><i class="ri-calendar-line"></i> 2026-05-01</span>
+            <span><i class="ri-mouse-line"></i> 提示：点击表格中的学科可查看轨迹</span>
+        </div>
+
+        <div class="article-content">
+            <p>这是之前考的绵阳二诊成绩，总分 <strong>460分</strong>。班级第 8 名，校排 346 名。借着这次建网站的机会，我把历次成绩做了一个小数据库。<strong>（点一下表格里带有虚线底纹的学科名字试试看！）</strong></p>
+            
+            <h2>📊 绵阳二诊成绩单</h2>
+            <table class="score-table">
+                <thead>
+                    <tr>
+                        <th>学科 (点击查看轨迹)</th>
+                        <th>成绩</th>
+                        <th>班级排名</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="subject-link" onclick="openModal('语文')">语文 👆</td><td>91</td><td>47</td></tr>
+                    <tr><td class="subject-link" onclick="openModal('数学')">数学 👆</td><td>108</td><td>3</td></tr>
+                    <tr><td class="subject-link" onclick="openModal('英语')">英语 👆</td><td>117</td><td>4</td></tr>
+                    <tr><td class="subject-link" onclick="openModal('物理')">物理 👆</td><td>54</td><td>8</td></tr>
+                    <tr><td class="subject-link" onclick="openModal('化学')">化学 👆</td><td>34</td><td>46</td></tr>
+                    <tr><td class="subject-link" onclick="openModal('生物')">生物 👆</td><td>56</td><td>19</td></tr>
+                    <tr><th>总计</th><th>460</th><th>8</th></tr>
+                </tbody>
+            </table>
+
+            <h2>🔍 考后深度分析</h2>
+            <p><strong>🔥 语数外的巅峰体验：</strong> 这次绵二的数学（108分）和英语（117分）发挥得非常出色！校排都冲进了前150。说明我的主课底子其实是很硬的，只要手感在，分数绝对能稳住。</p>
+            <p><strong>🧊 理综的滑铁卢：</strong> 相比于抢眼的数学和英语，理综确实拖了后腿，尤其是化学（34分），班排掉到了46名。基础知识出现断层，大题估计也是一头雾水。</p>
+            <p><strong>💡 有趣的对比发现：</strong> 如果对比后来的德阳三诊，会发现我的<strong>理综（物化生）在后期有了明显的触底反弹</strong>，但语数外反而有小幅回落。这说明在复习策略上，顾此失彼是常态。最后这一个月，必须要做到<strong>“每天都有各科的温度”</strong>，不能只看一科！</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="historyModal">
+        <div class="modal-content">
+            <h2 id="modalTitle" style="margin-top: 0; color: #4f46e5;">学科轨迹</h2>
+            <p id="modalData" style="line-height: 2;"></p>
+            <div class="close-btn" onclick="closeModal()">我知道了</div>
+        </div>
+    </div>
+
+    <script>
+        // 这是你的个人成绩数据库 (绵阳二诊 vs 德阳三诊)
+        const scoreHistory = {
+            '语文': { mian2: 91, de3: 82, diff: -9 },
+            '数学': { mian2: 108, de3: 99, diff: -9 },
+            '英语': { mian2: 117, de3: 113, diff: -4 },
+            '物理': { mian2: 54, de3: 72, diff: 18 },
+            '化学': { mian2: 34, de3: 49, diff: 15 },
+            '生物': { mian2: 56, de3: 60, diff: 4 }
+        };
+
+        const modal = document.getElementById('historyModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalData = document.getElementById('modalData');
+
+        function openModal(subject) {
+            const data = scoreHistory[subject];
+            modalTitle.innerText = `${subject} · 历次成绩追踪`;
+            
+            // 判断是进步还是退步，给予不同颜色的提示
+            let trendHtml = '';
+            if (data.diff > 0) {
+                trendHtml = `<span class="trend-up">进步了 ${data.diff} 分！🔥</span>`;
+            } else if (data.diff < 0) {
+                trendHtml = `<span class="trend-down">退步了 ${Math.abs(data.diff)} 分，需警惕！⚠️</span>`;
+            } else {
+                trendHtml = `<span>成绩持平 稳住了 🛡️</span>`;
+            }
+
+            modalData.innerHTML = `
+                📝 绵阳二诊：<strong>${data.mian2}</strong> 分<br>
+                🎯 德阳三诊：<strong>${data.de3}</strong> 分<br>
+                <hr style="border:0; border-top:1px dashed #ccc; margin: 15px 0;">
+                📈 趋势分析：${trendHtml}
+            `;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // 点击弹窗外面也能关闭
+        modal.addEventListener('click', function(e) {
+            if(e.target === modal) closeModal();
+        });
+    </script>
+</body>
+</html>
