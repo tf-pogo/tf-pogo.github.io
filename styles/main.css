@@ -1,429 +1,227 @@
 /* =========================================
-   Pogo 个人主页 高级美化版 CSS
+   Pogo 的个人主页 - MD3 + 极光多彩优化版
    ========================================= */
 
-/* 引入高级感字体 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: 'Noto Sans SC', -apple-system, sans-serif;
+/* /* 🌟 1. 色彩体系：淡蓝色主题 (Light Blue Theme) */
+:root {
+    /* 浅色模式 - 清新的天空蓝调 */
+    --md-sys-color-primary: #0284C7; /* 主色：明亮的天空蓝 */
+    --md-sys-color-on-primary: #FFFFFF;
+    --md-sys-color-secondary-container: #E0F2FE; /* 按钮底色：极淡的蓝冰色 */
+    --md-sys-color-on-secondary-container: #0369A1;
+    
+    /* 背景极光三原色 - 替换为蓝/青/白 */
+    --bg-aurora-1: #E0F2FE; /* 浅蓝 */
+    --bg-aurora-2: #F0F9FF; /* 更淡的蓝 */
+    --bg-aurora-3: #CFFAFE; /* 淡青色 */
+    
+    /* 卡片颜色保持微透明 */
+    --md-sys-color-surface-container: rgba(255, 255, 255, 0.7);
+    --md-sys-color-surface-container-highest: rgba(255, 255, 255, 0.85);
+    --md-sys-color-outline: #94A3B8;
+    --md-sys-color-on-background: #0F172A;
 }
 
+body.dark-mode {
+    /* 深色模式 - 深邃的海军蓝与冰蓝发光 */
+    --md-sys-color-primary: #7DD3FC; /* 暗黑下的高亮冰蓝 */
+    --md-sys-color-on-primary: #003258;
+    --md-sys-color-secondary-container: #0C4A6E; /* 按钮底色：深海蓝 */
+    --md-sys-color-on-secondary-container: #E0F2FE;
+    
+    /* 暗色背景极光 */
+    --bg-aurora-1: #0F172A; /* 深沉暗蓝 */
+    --bg-aurora-2: #1E3A8A; /* 宝石蓝 */
+    --bg-aurora-3: #082F49; /* 深海青 */
+    
+    /* 卡片颜色 */
+    --md-sys-color-surface-container: rgba(30, 41, 59, 0.75); 
+    --md-sys-color-surface-container-highest: rgba(51, 65, 85, 0.85);
+    --md-sys-color-outline: #64748B;
+    --md-sys-color-on-background: #F8FAFC;
+}
+
+body.dark-mode {
+    /* 深色模式 (提亮底色，变成高级的深邃夜空蓝/紫，不再死黑) */
+    --md-sys-color-primary: #D0BCFF;
+    --md-sys-color-on-primary: #381E72;
+    --md-sys-color-secondary-container: #4A4458;
+    --md-sys-color-on-secondary-container: #E8DEF8;
+    
+    /* 暗色背景极光三原色 */
+    --bg-aurora-1: #2E2545; /* 偏亮的深紫 */
+    --bg-aurora-2: #1E293B; /* 偏亮的深蓝 */
+    --bg-aurora-3: #3F2A35; /* 偏亮的深绯红 */
+    
+    /* 卡片颜色提亮并加入微透明 */
+    --md-sys-color-surface-container: rgba(54, 52, 63, 0.75); 
+    --md-sys-color-surface-container-highest: rgba(68, 65, 78, 0.85);
+    --md-sys-color-outline: #A19DAC;
+    --md-sys-color-on-background: #F8FAFC;
+}
+
+/* 🌟 2. 基础页面设置 & 多彩极光背景 */
+* {
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, Roboto, "Helvetica Neue", sans-serif;
+}
 body {
+    margin: 0;
+    padding: 20px;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* 动态流动背景：像极光一样的颜色组合 */
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
-    padding: 40px 20px;
-    overflow-x: hidden;
+    color: var(--md-sys-color-on-background);
+    
+    /* 核心魔法：多彩极光网格渐变 */
+    background-color: var(--bg-aurora-1);
+    background-image: 
+        radial-gradient(circle at 15% 50%, var(--bg-aurora-1), transparent 60%),
+        radial-gradient(circle at 85% 30%, var(--bg-aurora-2), transparent 60%),
+        radial-gradient(circle at 50% 80%, var(--bg-aurora-3), transparent 60%);
+    background-attachment: fixed;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* 玻璃容器 2.0：增加外发光和精细边缘 */
+/* 🌟 3. 主容器 (大卡片) */
 .glass-container {
-    width: 100%;
-    max-width: 650px;
-    background: rgba(255, 255, 255, 0.45);
+    background-color: var(--md-sys-color-surface-container);
+    /* 加上磨砂效果，让底层极光晕染开来 */
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 32px;
-    padding: 50px 40px;
-    box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.15),
-        inset 0 0 20px rgba(255, 255, 255, 0.3);
-    position: relative;
-    z-index: 1;
+    width: 100%;
+    max-width: 650px;
+    padding: 40px;
+    border-radius: 28px;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15); /* 极细的高光边缘 */
+    text-align: center;
+    transition: background-color 0.4s ease;
+}
+body.dark-mode .glass-container {
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* 装饰性背景球（增加层次感） */
-body::before, body::after {
-    content: "";
-    position: fixed;
+/* 🌟 4. 头像与文本 */
+.avatar-wrapper {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 20px;
+    cursor: pointer;
     border-radius: 50%;
-    filter: blur(80px);
-    z-index: 0;
-    opacity: 0.6;
+    border: 3px solid var(--md-sys-color-surface-container-highest);
+    overflow: hidden;
+    transition: transform 0.2s ease;
 }
-body::before {
-    width: 300px;
-    height: 300px;
-    background: #4f46e5;
-    top: 10%;
-    left: 10%;
-}
-body::after {
-    width: 250px;
-    height: 250px;
-    background: #ec4899;
-    bottom: 10%;
-    right: 10%;
-}
+.avatar-wrapper:active { transform: scale(0.95); }
+.avatar { width: 100%; height: 100%; object-fit: cover; }
 
-/* 头像高级动画 */
-.avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 5px solid #fff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.avatar:hover {
-    transform: scale(1.1) rotate(10deg);
-    border-color: #4f46e5;
-    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3);
-}
-
-/* 渐变标题动画 */
 .site-title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    margin: 25px 0 10px;
-    background: linear-gradient(90deg, #1e1b4b, #4f46e5, #ec4899, #1e1b4b);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shineText 5s linear infinite;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 10px;
+    color: var(--md-sys-color-on-background);
 }
-
-@keyframes shineText {
-    to { background-position: 200% center; }
-}
-
 .site-description {
-    color: #475569;
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 35px;
-    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--md-sys-color-outline);
+    margin-bottom: 30px;
 }
 
-/* 导航按钮：变成带玻璃质感的“药丸” */
+/* 🌟 5. 导航按钮 (Tonal Buttons) */
 .menu-container {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    gap: 15px;
+    justify-content: center;
+    gap: 12px;
     margin-bottom: 40px;
 }
-
 .menu {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 22px;
-    background: rgba(255, 255, 255, 0.6);
-    color: #1e293b;
-    border-radius: 50px;
-    font-size: 0.95rem;
+    text-decoration: none;
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    border-radius: 999px;
+    height: 48px;
+    padding: 0 24px;
     font-weight: 600;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
 }
-
 .menu:hover {
-    background: #fff;
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    color: #4f46e5;
+    filter: brightness(0.92);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
 }
+body.dark-mode .menu:hover { filter: brightness(1.15); }
 
-/* 文章列表卡片：更强的悬浮光效 */
-.post {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    padding: 24px;
-    margin-bottom: 18px;
-    transition: all 0.4s ease;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    position: relative;
-    overflow: hidden;
+/* 🌟 6. 文章列表 (Cards) */
+.post-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
+.post a {
+    display: block;
+    background-color: var(--md-sys-color-surface-container-highest);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px 24px;
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--md-sys-color-on-background);
+    text-align: left;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+body.dark-mode .post a { border: 1px solid rgba(255, 255, 255, 0.03); }
 
-.post::before {
-    content: "";
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    transition: 0.5s;
+.post a:hover {
+    background-color: var(--md-sys-color-surface-container);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
 }
+.post-title { margin: 0 0 8px; font-size: 1.25rem; font-weight: 600; }
+.post-info { font-size: 0.85rem; color: var(--md-sys-color-outline); display: flex; gap: 15px; }
 
-.post:hover::before {
-    left: 100%;
-}
-
-.post:hover {
-    background: rgba(255, 255, 255, 0.8);
-    transform: scale(1.02);
-    border-color: #fff;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-}
-
-.post-title {
-    font-size: 1.3rem;
-    color: #1e293b;
-    margin-bottom: 8px;
-}
-
-.post-info {
-    color: #64748b;
-    font-size: 0.85rem;
-}
-
-/* 页脚样式 */
-.site-footer {
-    margin-top: 50px;
-    color: #475569;
-    font-size: 0.9rem;
-    text-align: center;
-}
+/* 页脚 */
+.site-footer { margin-top: 30px; font-size: 0.85rem; color: var(--md-sys-color-outline); }
 
 /* =========================================
-   提示框 (Tooltip) 样式
-   ========================================= */
-.avatar-wrapper {
-    position: relative;
-    display: inline-block;
-    cursor: pointer; /* 鼠标放上去变成小手 */
-}
-
-/* 提示框本体 */
-.avatar-wrapper::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(4px);
-    z-index: 10;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    pointer-events: none; /* 防止遮挡点击 */
-}
-
-/* 鼠标悬停时提示框上浮显示 */
-.avatar-wrapper:hover::after {
-    opacity: 1;
-    visibility: visible;
-    bottom: -20px;
-}
-
-/* =========================================
-   深色模式 (Dark Mode) 极致配色
-   ========================================= */
-/* 当 body 被加上 dark-mode 时的样式覆盖 */
-body.dark-mode {
-    background: linear-gradient(-45deg, #0f172a, #1e1b4b, #171717, #0f172a);
-    background-size: 400% 400%;
-}
-
-/* 深色模式下的背景光球 */
-body.dark-mode::before { background: #4338ca; }
-body.dark-mode::after { background: #be185d; }
-
-/* 深色模式下的毛玻璃容器 */
-body.dark-mode .glass-container {
-    background: rgba(15, 23, 42, 0.55);
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.02);
-}
-
-/* 深色模式字体颜色修正 */
-body.dark-mode .site-title {
-    background: linear-gradient(90deg, #818cf8, #c084fc, #f472b6, #818cf8);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-}
-body.dark-mode .site-description,
-body.dark-mode .post-info,
-body.dark-mode .site-footer {
-    color: #94a3b8;
-}
-
-/* 深色模式导航胶囊 */
-body.dark-mode .menu {
-    background: rgba(30, 41, 59, 0.6);
-    color: #cbd5e1;
-    border-color: rgba(255, 255, 255, 0.1);
-}
-body.dark-mode .menu:hover {
-    background: #6366f1;
-    color: #fff;
-    border-color: #6366f1;
-}
-
-/* 深色模式文章卡片 */
-body.dark-mode .post {
-    background: rgba(30, 41, 59, 0.4);
-    border-color: rgba(255, 255, 255, 0.05);
-}
-body.dark-mode .post-title {
-    color: #f8fafc;
-}
-body.dark-mode .post:hover {
-    background: rgba(30, 41, 59, 0.8);
-    border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-/* =========================================
-   深色模式切换：圆形扩散展开动画
-   ========================================= */
-/* 阻止浏览器默认的淡入淡出动画 */
-::view-transition-old(root),
-::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
-}
-/* 永远让“新变出来的页面”在最上层，方便我们做遮罩扩散 */
-::view-transition-new(root) {
-    z-index: 9999;
-}
-/* =========================================
-   PC端大屏专属优化：左右双栏布局 (响应式)
-   ========================================= */
-/* 只有当屏幕宽度大于 900px（平板和电脑）时，这部分代码才会生效 */
-/* =========================================
-   PC端大屏专属优化：左右双栏布局 (响应式)
-   ========================================= */
-/* 📱 手机端专属：把社交按钮变成可爱的正圆形，隐藏文字 */
-.icon-btn {
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    border-radius: 50%;
-    justify-content: center;
-}
-.icon-btn .nav-text {
-    display: none; /* 隐藏手机端文字 */
-}
-.icon-btn i {
-    font-size: 1.2rem; /* 图标稍微放大，方便手指点击 */
-    margin: 0; /* 修正居中 */
-}
-
-/* 手机端：“关于”按钮保持胶囊形状，并加宽一点显得稳重 */
-.about-btn {
-    padding: 10px 30px;
-}
-/* =========================================
-   📱 手机端终极排版优化：3x2 完美矩阵 + 底座
+   📱 响应式：手机端 3x2 图标矩阵排版
    ========================================= */
 @media (max-width: 899px) {
-    .menu-container {
-        /* 精准算好的宽度：刚好只够放 3 个圆圈，强制变成 3+3 的两排 */
-        max-width: 180px; 
-        margin: 0 auto 35px auto; /* 保证整个方阵在手机屏幕正中间 */
-        justify-content: center;
-    }
-    
-    .about-btn {
-        width: 100%; /* 长度刚好拉伸到和上面的 3 个图标矩阵一样宽 */
-        margin-top: 10px; /* 和上面的圆圈拉开一点点间距 */
-    }
+    .menu-container { max-width: 180px; margin: 0 auto 35px auto; justify-content: center; }
+    .icon-btn { width: 48px; height: 48px; padding: 0; justify-content: center; }
+    .icon-btn .nav-text { display: none; }
+    .icon-btn i { font-size: 1.3rem; margin: 0; }
+    .about-btn { width: 100%; margin-top: 8px; justify-content: center; }
 }
-   @media (min-width: 900px) {
-    .glass-container {
-        max-width: 1050px;
-        display: grid;
-        grid-template-columns: 320px 1fr;
-        grid-template-rows: 1fr auto;
-        gap: 0 60px;
-        padding: 50px 60px;
-        text-align: left;
-    }
 
-    .site-header {
-        grid-column: 1;
-        grid-row: 1 / 3;
-        position: sticky;
-        top: 50px;
-        height: fit-content;
-    }
-
-    /* 🌟 魔法在这里：把散乱的按钮改成整齐的 2 列网格 */
-    .menu-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* 强制分成等宽的两列 */
-        gap: 12px; /* 舒适的呼吸间距 */
-        width: 95%; /* 稍微收一点边，不顶到头 */
-        margin-top: 25px; /* 和上面的简介拉开一点距离 */
-    }
-
-    /* ...前面 grid 布局的代码保留... */
-
-    .menu-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        width: 95%;
-        margin-top: 25px;
-    }
-
-    /* 💻 电脑大屏：恢复胶囊形状和文字 */
-    .menu, .icon-btn {
-        width: 100%;
-        height: auto;
-        border-radius: 50px;
-        justify-content: center;
-        padding: 10px 0;
-        font-size: 0.9rem;
-    }
-    .icon-btn .nav-text {
-        display: inline; /* 电脑端重新显示文字 */
-    }
-    
-    /* 大屏下，“关于”按钮让它横跨两列，垫在最下面更好看 */
-    .about-btn {
-        grid-column: 1 / 3;
-    }
-
-    /* ...后面文章列表的代码保留... */
-    .post-container {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    .site-footer {
-        grid-column: 2;
-        grid-row: 2;
-        margin-top: 30px;
-        text-align: left;
-    }
-}
 /* =========================================
-   修复：让文章页、归档页、404页恢复单列居中阅读模式
+   💻 响应式：PC端大屏 双栏布局
    ========================================= */
 @media (min-width: 900px) {
-    .article-container, 
-    .archive-container, 
-    .not-found-container {
-        display: block !important; /* 强制取消双栏网格，恢复普通的上下排版 */
-        max-width: 800px !important; /* 文章页不需要太宽，800px 是最符合人眼阅读的宽度 */
-        margin: 0 auto !important; /* 强制在电脑屏幕上居中 */
+    .glass-container {
+        max-width: 1000px; display: grid; grid-template-columns: 300px 1fr;
+        grid-template-rows: 1fr auto; gap: 0 60px; padding: 50px 60px; text-align: left;
     }
+    .site-header { grid-column: 1; grid-row: 1 / 3; position: sticky; top: 50px; height: fit-content; }
+    .menu-container, .site-header { justify-content: flex-start; }
+    .menu-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; margin-top: 25px; }
+    .menu, .icon-btn { width: 100%; justify-content: center; }
+    .icon-btn .nav-text { display: inline; }
+    .about-btn { grid-column: 1 / 3; }
+    .post-container { grid-column: 2; grid-row: 1; }
+    .site-footer { grid-column: 2; grid-row: 2; margin-top: 30px; text-align: left; }
+    .article-container, .archive-container { display: block !important; max-width: 800px !important; margin: 0 auto !important; }
 }
+
+/* =========================================
+   动画：深色模式切换扩散动画
+   ========================================= */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { z-index: 9999; }
