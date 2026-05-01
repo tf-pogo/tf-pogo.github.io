@@ -3,61 +3,57 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>testing | Pogo个人主页</title>
-    <link rel="shortcut icon" href="https://tf-pogo.github.io/favicon.ico?v=1723015263149">
+    <title>testing - Pogo个人主页</title>
+    <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- 核心样式引用：注意 ../ 路径 -->
-    <link rel="stylesheet" href="../styles/main.css">
     
-    <meta name="description" content="一个知识越贫乏的人，越是拥有莫名的勇气和自豪感。知识越贫乏，你所相信的东西越绝对。因为你根本没有听过于此相对立的观点。" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <style>
+        /* 这是专门给文章正文排版用的一些微调样式 */
+        .article-container {
+            max-width: 700px; /* 文章页稍微宽一点方便阅读 */
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 25px;
+            color: #4f46e5;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        .back-btn:hover {
+            transform: translateX(-5px); /* 鼠标放上去有一个向左的小动画 */
+        }
+        .article-content {
+            line-height: 1.8;
+            color: #334155;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.05); /* 一条浅浅的分割线 */
+        }
+        /* 美化文章里的段落和图片 */
+        .article-content p { margin-bottom: 15px; }
+        .article-content img { max-width: 100%; border-radius: 8px; }
+    </style>
 </head>
 <body>
-    <div class="main">
-        <div class="main-content">
-            <!-- 使用 glass-container 包裹整篇文章 -->
-            <div class="glass-container post-detail">
-                
-                <!-- 简单的返回导航 -->
-                <div class="post-nav" style="margin-bottom: 20px;">
-                    <a href="https://tf-pogo.github.io" style="text-decoration: none; color: #6366f1; font-size: 0.9rem;">
-                        <i class="ri-arrow-left-line"></i> 返回首页
-                    </a>
-                </div>
-
-                <article class="post">
-                    <h2 class="post-title" style="font-size: 1.8rem; margin-bottom: 10px;">testing</h2>
-                    <div class="post-info" style="font-size: 0.85rem; color: #64748b; margin-bottom: 30px;">
-                        <span>2023-07-30</span> • <span>1 min read</span>
-                    </div>
-                    
-                    <div class="post-content-wrapper">
-                        <div class="post-content" style="line-height: 1.8; font-size: 1.05rem;">
-                            <p>一个知识越贫乏的人，越是拥有莫名的勇气和自豪感。知识越贫乏，你所相信的东西越绝对。因为你根本没有听过于此相对立的观点。</p>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 下一篇导航 -->
-                <div class="next-post" style="margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.05);">
-                    <div class="next" style="font-size: 0.8rem; color: #94a3b8;">下一篇</div>
-                    <a href="https://tf-pogo.github.io/post/11111/" style="text-decoration: none; color: #1e293b;">
-                        <h3 class="post-title" style="margin: 5px 0;">hi！</h3>
-                    </a>
-                </div>
-
-                <!-- 页脚：已去掉 Powered by Gridea -->
-                <div class="site-footer" style="margin-top: 40px; text-align: center; font-size: 0.8rem; color: #64748b; opacity: 0.6;">
-                    © 2026 Pogo's Personal Space.
-                    <a class="rss" href="https://tf-pogo.github.io/atom.xml" target="_blank" style="margin-left: 10px; color: inherit; text-decoration: none;">
-                        <i class="ri-rss-line"></i> RSS
-                    </a>
-                </div>
-            </div>
+    <div class="glass-container article-container">
+        
+        <a href="../../index.html" class="back-btn">
+            <i class="ri-arrow-left-line"></i> 返回首页
+        </a>
+        
+        <h1 class="site-title" style="font-size: 1.8rem; margin: 0 0 10px;">testing</h1>
+        <div class="post-info">
+            <span><i class="ri-calendar-line"></i> 2023-07-30</span>
+            <span><i class="ri-time-line"></i> 1 min read</span>
         </div>
-    </div>
 
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+        <div class="article-content">
+            <p>这是一篇测试文章的正文。</p>
+            <p>以后如果你有新的文章内容，直接写在这个 <code>&lt;div class="article-content"&gt;</code> 里面就可以啦！</p>
+        </div>
+        
+    </div>
 </body>
 </html>
