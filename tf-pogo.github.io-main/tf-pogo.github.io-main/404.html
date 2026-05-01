@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 迷路啦 - Pogo个人主页</title>
+    <link rel="shortcut icon" href="https://tf-pogo.github.io/favicon.ico?v=1723015263149">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./styles/main.css">
+    
+    <style>
+        /* 专门给 404 页面写的一点动画和排版特效 */
+        .not-found-container {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        
+        .error-code {
+            font-size: 7rem;
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(90deg, #4f46e5, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            text-shadow: 0 10px 30px rgba(79, 70, 229, 0.2);
+            animation: float 3s ease-in-out infinite; /* 让404上下浮动 */
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .error-text {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin: 20px 0 40px;
+        }
+        
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, #4f46e5, #818cf8);
+            color: #fff !important;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .home-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(79, 70, 229, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-container not-found-container">
+        
+        <h1 class="error-code">404</h1>
+        
+        <p class="error-text">哎呀！Pogo的修狗好像跑丢了，这里什么都没有...</p>
+        
+        <a href="./index.html" class="home-btn">
+            <i class="ri-home-smile-line"></i> 带我回家
+        </a>
+        
+    </div>
+</body>
+</html>
