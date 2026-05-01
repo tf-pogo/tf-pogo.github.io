@@ -28,14 +28,7 @@
         body.dark-mode .score-table tr:hover { background: rgba(30, 41, 59, 0.8); }
 
         /* 🌟 可以点击的学科样式 */
-        .subject-link {
-            color: #ec4899;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: underline;
-            text-decoration-style: dashed;
-            transition: all 0.3s ease;
-        }
+        .subject-link { color: #ec4899; font-weight: bold; cursor: pointer; text-decoration: none; transition: all 0.3s ease; }
         .subject-link:hover { color: #4f46e5; background: rgba(79, 70, 229, 0.1); border-radius: 6px; padding: 2px 8px;}
         body.dark-mode .subject-link { color: #f472b6; }
         body.dark-mode .subject-link:hover { color: #818cf8; background: rgba(129, 140, 248, 0.2); }
@@ -112,52 +105,14 @@
         </div>
     </div>
 
-    <script>
-        // 这是你的个人成绩数据库 (绵阳二诊 vs 德阳三诊)
-        const scoreHistory = {
-            '语文': { mian2: 91, de3: 82, diff: -9 },
-            '数学': { mian2: 108, de3: 99, diff: -9 },
-            '英语': { mian2: 117, de3: 113, diff: -4 },
-            '物理': { mian2: 54, de3: 72, diff: 18 },
-            '化学': { mian2: 34, de3: 49, diff: 15 },
-            '生物': { mian2: 56, de3: 60, diff: 4 }
-        };
+    <div class="modal-overlay" id="historyModal">
+        <div class="modal-content">
+            <h2 id="modalTitle" style="color: #4f46e5; margin-top: 0;">学科全记录</h2>
+            <div id="modalData" style="line-height: 1.6; margin: 15px 0;"></div>
+            <div class="close-btn" onclick="closeModal()">关 闭</div>
+        </div>
+    </div>
 
-        const modal = document.getElementById('historyModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalData = document.getElementById('modalData');
-
-        function openModal(subject) {
-            const data = scoreHistory[subject];
-            modalTitle.innerText = `${subject} · 历次成绩追踪`;
-            
-            // 判断是进步还是退步，给予不同颜色的提示
-            let trendHtml = '';
-            if (data.diff > 0) {
-                trendHtml = `<span class="trend-up">进步了 ${data.diff} 分！🔥</span>`;
-            } else if (data.diff < 0) {
-                trendHtml = `<span class="trend-down">退步了 ${Math.abs(data.diff)} 分，需警惕！⚠️</span>`;
-            } else {
-                trendHtml = `<span>成绩持平 稳住了 🛡️</span>`;
-            }
-
-            modalData.innerHTML = `
-                📝 绵阳二诊：<strong>${data.mian2}</strong> 分<br>
-                🎯 德阳三诊：<strong>${data.de3}</strong> 分<br>
-                <hr style="border:0; border-top:1px dashed #ccc; margin: 15px 0;">
-                📈 趋势分析：${trendHtml}
-            `;
-            modal.classList.add('active');
-        }
-
-        function closeModal() {
-            modal.classList.remove('active');
-        }
-
-        // 点击弹窗外面也能关闭
-        modal.addEventListener('click', function(e) {
-            if(e.target === modal) closeModal();
-        });
-    </script>
+    <script src="../../scripts/db.js"></script>
 </body>
 </html>
