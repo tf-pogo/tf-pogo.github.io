@@ -1,179 +1,360 @@
-        /* 全局基础设置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            text-decoration: none;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+/* =========================================
+   Pogo 个人主页 高级美化版 CSS
+   ========================================= */
 
-        /* 动态渐变背景 */
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(45deg, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            padding: 20px;
-            color: #333;
-        }
+/* 引入高级感字体 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Noto Sans SC', -apple-system, sans-serif;
+}
 
-        /* 毛玻璃主体容器 */
-        .glass-container {
-            width: 100%;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
-        }
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 动态流动背景：像极光一样的颜色组合 */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    padding: 40px 20px;
+    overflow-x: hidden;
+}
 
-        /* 头部样式 */
-        .site-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-        .avatar {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 4px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
+/* 玻璃容器 2.0：增加外发光和精细边缘 */
+.glass-container {
+    width: 100%;
+    max-width: 650px;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 32px;
+    padding: 50px 40px;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.15),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1;
+}
 
-        .avatar:hover {
-            transform: scale(1.08) rotate(5deg);
-            box-shadow: 0 12px 25px rgba(79, 70, 229, 0.2);
-        }
+/* 装饰性背景球（增加层次感） */
+body::before, body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.6;
+}
+body::before {
+    width: 300px;
+    height: 300px;
+    background: #4f46e5;
+    top: 10%;
+    left: 10%;
+}
+body::after {
+    width: 250px;
+    height: 250px;
+    background: #ec4899;
+    bottom: 10%;
+    right: 10%;
+}
 
-        .site-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin: 20px 0 10px;
-            background: linear-gradient(90deg, #4f46e5, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+/* 头像高级动画 */
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-        .site-description {
-            color: #64748b;
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
+.avatar:hover {
+    transform: scale(1.1) rotate(10deg);
+    border-color: #4f46e5;
+    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3);
+}
 
-        /* 快捷导航胶囊按钮 */
-        .menu-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
+/* 渐变标题动画 */
+.site-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin: 25px 0 10px;
+    background: linear-gradient(90deg, #1e1b4b, #4f46e5, #ec4899, #1e1b4b);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineText 5s linear infinite;
+}
 
-        .menu {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.7);
-            color: #475569;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
-        }
+@keyframes shineText {
+    to { background-position: 200% center; }
+}
 
-        .menu:hover {
-            background: #4f46e5;
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
-        }
+.site-description {
+    color: #475569;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    font-weight: 300;
+}
 
-        /* 社交媒体小图标 */
-        .social-container {
-            margin-top: 20px;
-        }
+/* 导航按钮：变成带玻璃质感的“药丸” */
+.menu-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
 
-        .social-container a {
-            color: #94a3b8;
-            font-size: 1.6rem;
-            margin: 0 12px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
+.menu {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background: rgba(255, 255, 255, 0.6);
+    color: #1e293b;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        .social-container a:hover {
-            color: #ec4899;
-            transform: scale(1.2);
-        }
+.menu:hover {
+    background: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    color: #4f46e5;
+}
 
-        /* 文章列表卡片化 */
-        .post-container {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+/* 文章列表卡片：更强的悬浮光效 */
+.post {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 18px;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+}
 
-        .post {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 16px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-        }
+.post::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.5s;
+}
 
-        .post a {
-            display: block;
-            color: inherit;
-        }
+.post:hover::before {
+    left: 100%;
+}
 
-        .post:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            border-color: rgba(255, 255, 255, 0.9);
-        }
+.post:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.02);
+    border-color: #fff;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
 
-        .post-title {
-            margin: 0 0 10px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #1e293b;
-            transition: color 0.3s ease;
-        }
+.post-title {
+    font-size: 1.3rem;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
 
-        .post:hover .post-title {
-            color: #4f46e5;
-        }
+.post-info {
+    color: #64748b;
+    font-size: 0.85rem;
+}
 
-        .post-info {
-            font-size: 0.85rem;
-            color: #94a3b8;
-            display: flex;
-            gap: 15px;
-        }
+/* 页脚样式 */
+.site-footer {
+    margin-top: 50px;
+    color: #475569;
+    font-size: 0.9rem;
+    text-align: center;
+}
 
-        /* 页脚 */
-        .site-footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #94a3b8;
-        }
+/* =========================================
+   提示框 (Tooltip) 样式
+   ========================================= */
+.avatar-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer; /* 鼠标放上去变成小手 */
+}
+
+/* 提示框本体 */
+.avatar-wrapper::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(4px);
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    pointer-events: none; /* 防止遮挡点击 */
+}
+
+/* 鼠标悬停时提示框上浮显示 */
+.avatar-wrapper:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: -20px;
+}
+
+/* =========================================
+   深色模式 (Dark Mode) 极致配色
+   ========================================= */
+/* 当 body 被加上 dark-mode 时的样式覆盖 */
+body.dark-mode {
+    background: linear-gradient(-45deg, #0f172a, #1e1b4b, #171717, #0f172a);
+    background-size: 400% 400%;
+}
+
+/* 深色模式下的背景光球 */
+body.dark-mode::before { background: #4338ca; }
+body.dark-mode::after { background: #be185d; }
+
+/* 深色模式下的毛玻璃容器 */
+body.dark-mode .glass-container {
+    background: rgba(15, 23, 42, 0.55);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.02);
+}
+
+/* 深色模式字体颜色修正 */
+body.dark-mode .site-title {
+    background: linear-gradient(90deg, #818cf8, #c084fc, #f472b6, #818cf8);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+}
+body.dark-mode .site-description,
+body.dark-mode .post-info,
+body.dark-mode .site-footer {
+    color: #94a3b8;
+}
+
+/* 深色模式导航胶囊 */
+body.dark-mode .menu {
+    background: rgba(30, 41, 59, 0.6);
+    color: #cbd5e1;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+body.dark-mode .menu:hover {
+    background: #6366f1;
+    color: #fff;
+    border-color: #6366f1;
+}
+
+/* 深色模式文章卡片 */
+body.dark-mode .post {
+    background: rgba(30, 41, 59, 0.4);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+body.dark-mode .post-title {
+    color: #f8fafc;
+}
+body.dark-mode .post:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+/* =========================================
+   深色模式切换：圆形扩散展开动画
+   ========================================= */
+/* 阻止浏览器默认的淡入淡出动画 */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+/* 永远让“新变出来的页面”在最上层，方便我们做遮罩扩散 */
+::view-transition-new(root) {
+    z-index: 9999;
+}
+/* =========================================
+   PC端大屏专属优化：左右双栏布局 (响应式)
+   ========================================= */
+/* 只有当屏幕宽度大于 900px（平板和电脑）时，这部分代码才会生效 */
+/* =========================================
+   PC端大屏专属优化：左右双栏布局 (响应式)
+   ========================================= */
+@media (min-width: 900px) {
+    .glass-container {
+        max-width: 1050px;
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        grid-template-rows: 1fr auto;
+        gap: 0 60px;
+        padding: 50px 60px;
+        text-align: left;
+    }
+
+    .site-header {
+        grid-column: 1;
+        grid-row: 1 / 3;
+        position: sticky;
+        top: 50px;
+        height: fit-content;
+    }
+
+    /* 🌟 魔法在这里：把散乱的按钮改成整齐的 2 列网格 */
+    .menu-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 强制分成等宽的两列 */
+        gap: 12px; /* 舒适的呼吸间距 */
+        width: 95%; /* 稍微收一点边，不顶到头 */
+        margin-top: 25px; /* 和上面的简介拉开一点距离 */
+    }
+
+    /* 大屏下统一按钮的尺寸 */
+    .menu {
+        width: 100%;
+        justify-content: center; /* 图标和文字完美居中 */
+        padding: 10px 0; /* 统一高度 */
+        font-size: 0.9rem; /* 稍微精致一点的字号 */
+    }
+
+    .post-container {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .site-footer {
+        grid-column: 2;
+        grid-row: 2;
+        margin-top: 30px;
+        text-align: left;
+    }
+}
