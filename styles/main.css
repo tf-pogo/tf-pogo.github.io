@@ -330,6 +330,22 @@ body.dark-mode .post:hover {
 .about-btn {
     padding: 10px 30px;
 }
+/* =========================================
+   📱 手机端终极排版优化：3x2 完美矩阵 + 底座
+   ========================================= */
+@media (max-width: 899px) {
+    .menu-container {
+        /* 精准算好的宽度：刚好只够放 3 个圆圈，强制变成 3+3 的两排 */
+        max-width: 180px; 
+        margin: 0 auto 35px auto; /* 保证整个方阵在手机屏幕正中间 */
+        justify-content: center;
+    }
+    
+    .about-btn {
+        width: 100%; /* 长度刚好拉伸到和上面的 3 个图标矩阵一样宽 */
+        margin-top: 10px; /* 和上面的圆圈拉开一点点间距 */
+    }
+}
    @media (min-width: 900px) {
     .glass-container {
         max-width: 1050px;
@@ -397,5 +413,17 @@ body.dark-mode .post:hover {
         grid-row: 2;
         margin-top: 30px;
         text-align: left;
+    }
+}
+/* =========================================
+   修复：让文章页、归档页、404页恢复单列居中阅读模式
+   ========================================= */
+@media (min-width: 900px) {
+    .article-container, 
+    .archive-container, 
+    .not-found-container {
+        display: block !important; /* 强制取消双栏网格，恢复普通的上下排版 */
+        max-width: 800px !important; /* 文章页不需要太宽，800px 是最符合人眼阅读的宽度 */
+        margin: 0 auto !important; /* 强制在电脑屏幕上居中 */
     }
 }
