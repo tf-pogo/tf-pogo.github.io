@@ -185,11 +185,36 @@ body.dark-mode .post a { border: 1px solid rgba(255, 255, 255, 0.05); }
 @media (max-width: 899px) {
     .glass-container { padding: 40px 24px; border-radius: 36px; }
     .site-title { font-size: 2.2rem; }
-    .menu-container { max-width: 220px; margin: 0 auto 40px auto; justify-content: center; gap: 12px; }
-    .icon-btn { width: 56px; height: 56px; padding: 0; justify-content: center; }
+    
+    /* 🌟 M3E 手机端按钮重构：释放呼吸感 */
+    .menu-container { 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 280px; /* 放宽限制，让排列更舒展 */
+        margin: 0 auto 48px auto; 
+        gap: 16px; /* M3E 标志性的宽松间距 */
+    }
+    
+    .icon-btn { 
+        width: 64px; /* 增大触摸面积 */
+        height: 64px; 
+        padding: 0; 
+        justify-content: center; 
+        /* 魔法在这里：不用纯圆，用 M3 极具高级感的超大圆角矩形 */
+        border-radius: 24px; 
+    }
     .icon-btn .nav-text { display: none; }
-    .icon-btn i { font-size: 1.5rem; margin: 0; }
-    .about-btn { width: 100%; margin-top: 8px; justify-content: center; }
+    .icon-btn i { font-size: 1.75rem; margin: 0; } /* 图标跟着放大 */
+    
+    .about-btn { 
+        width: 100%; 
+        height: 64px; /* 和上面的图标保持极其统一的厚度 */
+        margin-top: 8px; 
+        justify-content: center; 
+        border-radius: 24px; /* 统一的 M3E 圆角语言 */
+        font-size: 1.1rem;
+    }
 }
 
 /* =========================================
