@@ -72,3 +72,27 @@ window.onclick = function(event) {
     const modal = document.getElementById('historyModal');
     if (event.target === modal) closeModal();
 }
+/* =========================================
+   Pogo 的文章索引库 (以后新文章写在这里即可！)
+   ========================================= */
+const articleList = [
+    {
+        title: "成都三诊：冰火两重天的成绩单 🔥",
+        date: "2026-05-02",
+        desc: "英语班排第2，快来看轨迹",
+        link: "./post/cheng-du-san-zhen/index.html"
+    },
+    {
+        title: "德阳三诊成绩复盘 📊",
+        date: "2026-05-01",
+        desc: "点击学科查看与绵阳二诊的对比",
+        link: "./post/gao-san-san-zhen/index.html"
+    },
+    {
+        title: "绵阳二诊成绩复盘 & 学科追踪",
+        date: "2026-05-01",
+        desc: "内含可交互轨迹分析",
+        link: "./post/mian-yang-er-zhen/index.html"
+    },
+    // 👆 以后写了新文章，只需要在这里复制粘贴加大括号就行了！
+];

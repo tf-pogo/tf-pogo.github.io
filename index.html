@@ -35,37 +35,8 @@
             </div>
         </div>
 
-        <div class="post-container">
-            <article class="post">
-                <a href="./post/cheng-du-san-zhen/index.html">
-                    <h2 class="post-title">成都三诊：冰火两重天的成绩单 🔥</h2>
-                    <div class="post-info">
-                        <span><i class="ri-calendar-line"></i> 2026-05-02</span>
-                        <span><i class="ri-mouse-line"></i> 英语班排第2，快来看轨迹</span>
-                    </div>
-                </a>
-            </article>
-
-            <article class="post">
-                <a href="./post/gao-san-san-zhen/index.html">
-                    <h2 class="post-title">高三德阳三诊成绩出炉 & 考后分析</h2>
-                    <div class="post-info">
-                        <span><i class="ri-calendar-line"></i> 2026-05-01</span>
-                        <span><i class="ri-time-line"></i> 3 min read</span>
-                    </div>
-                </a>
-            </article>
-            
-            <article class="post">
-                <a href="./post/mian-yang-er-zhen/index.html">
-                    <h2 class="post-title">绵阳二诊成绩复盘 & 学科追踪 📊</h2>
-                    <div class="post-info">
-                        <span><i class="ri-calendar-line"></i> 2026-05-01</span>
-                        <span><i class="ri-mouse-line"></i> 内含可交互轨迹分析</span>
-                    </div>
-                </a>
-            </article>
-        </div>
+        <div class="post-container" id="post-box">
+            </div>
 
         <div class="site-footer">
             <div class="footer-nav" style="margin-bottom: 15px; display: flex; justify-content: center; gap: 25px;">
@@ -138,6 +109,30 @@
                 );
             });
         });
+    </script>
+<script src="./scripts/db.js"></script>
+    
+    <script>
+        const postBox = document.getElementById('post-box');
+        let htmlContent = '';
+        
+        // 自动遍历数据库里的文章
+        articleList.forEach(post => {
+            htmlContent += `
+            <article class="post">
+                <a href="${post.link}">
+                    <h2 class="post-title">${post.title}</h2>
+                    <div class="post-info">
+                        <span><i class="ri-calendar-line"></i> ${post.date}</span>
+                        <span><i class="ri-mouse-line"></i> ${post.desc}</span>
+                    </div>
+                </a>
+            </article>
+            `;
+        });
+        
+        // 一次性塞进网页里
+        postBox.innerHTML = htmlContent;
     </script>
 </body>
 </html>
