@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>高三成都三诊成绩复盘 - Pogo个人主页</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        /* =========================================
+           文章页专属 MD3 样式 (完全继承主页配色)
+           ========================================= */
+        .article-container { max-width: 800px !important; margin: 0 auto !important; display: block !important; }
+        
+        .back-btn { display: inline-flex; align-items: center; gap: 5px; margin-bottom: 25px; color: var(--md-sys-color-primary); font-weight: 600; text-decoration: none; transition: opacity 0.2s ease; }
+        .back-btn:hover { opacity: 0.8; }
+        
+        .article-content { line-height: 1.8; color: var(--md-sys-color-on-background); margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--md-sys-color-outline); }
+        .article-content h2 { margin: 30px 0 15px; font-size: 1.4rem; color: var(--md-sys-color-primary); }
+        
+        .score-table { width: 100%; border-collapse: collapse; margin: 25px 0; border-radius: 16px; overflow: hidden; background-color: var(--md-sys-color-surface-container-highest); }
+        .score-table th, .score-table td { padding: 12px 15px; text-align: center; border-bottom: 1px solid rgba(150, 150, 150, 0.15); }
+        .score-table th { background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); font-weight: 600; }
+        
+        /* 🌟 学科点击按钮：终极居中对齐方案 */
+        .score-table td:first-child { display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(150, 150, 150, 0.15); height: 100%; min-height: 48px; }
+        .subject-link { color: var(--md-sys-color-primary); font-weight: bold; cursor: pointer; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 12px; }
+        .subject-link:hover { background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); }
+        
+        /* 弹窗样式 */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 9999; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content { background: var(--md-sys-color-surface-container); color: var(--md-sys-color-on-background); padding: 30px; border-radius: 28px; max-width: 400px; width: 90%; transform: translateY(20px); transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .close-btn { margin-top: 20px; display: block; width: 100%; padding: 12px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); text-align: center; border-radius: 999px; cursor: pointer; font-weight: 600; }
+        
+        .highlight-score { color: #ec4899; font-weight: bold; font-size: 1.1em; }
+    </style>
+</head>
+<body>
+    <div class="glass-container article-container">
+        <a href="../../index.html" class="back-btn"><i class="ri-arrow-left-line"></i> 返回首页</a>
+        
+        <h1 class="site-title" style="font-size: 1.8rem; margin: 0 0 10px;">成都三诊成绩复盘：冰火两重天</h1>
+        <div class="post-info">
+            <span><i class="ri-calendar-line"></i> 2026-05-02</span>
+            <span><i class="ri-mouse-line"></i> 点击学科查看历史轨迹</span>
+        </div>
+
+        <div class="article-content">
+            <p>成都三诊的成绩单拿到了，总分 <strong>435.5分</strong>。班排 26 名，校排 484 名。这次的成绩单真可谓是“冰火两重天”，优势科目极其亮眼，但短板也暴露无遗。</p>
+            
+            <table class="score-table">
+                <thead>
+                    <tr><th>学科 (点击对比)</th><th>成绩</th><th>班级排名</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="subject-link" onclick="openModal('语文')">语文 👆</td><td>80</td><td>47</td></tr>
+                    <tr><td class="subject-link" onclick="openModal('数学')">数学 👆</td><td>96</td><td>32</td></tr>
+                    <tr><td class="subject-link" onclick="openModal('英语')">英语 👆</td><td class="highlight-score">116.5</td><td>2 👑</td></tr>
+                    <tr><td class="subject-link" onclick="openModal('物理')">物理 👆</td><td>44</td><td>24</td></tr>
+                    <tr><td class="subject-link" onclick="openModal('化学')">化学 👆</td><td>49</td><td>23</td></tr>
+                    <tr><td class="subject-link" onclick="openModal('生物')">生物 👆</td><td>50</td><td>31</td></tr>
+                </tbody>
+            </table>
+
+            <h2>🔥 绝对的王牌：英语</h2>
+            <p>不得不吹一波这次的英语，<strong>116.5分</strong>，班级直接冲到了第 <strong>2名</strong>，全校第 <strong>109名</strong>！在总分只有435的情况下，英语单科几乎承担了整个总分的四分之一。这说明词汇量和阅读语感已经形成了绝对的肌肉记忆，继续保持这个节奏，高考妥妥的杀手锏！</p>
+
+            <h2>🧊 亟待抢救的重灾区：语文</h2>
+            <p>作为母语，语文只考了 <strong>80分</strong>，班排倒数（47名），这属实有点伤。但换个角度想，这也意味着<strong>语文是目前提分性价比最高的一科！</strong> 只要把古诗文默写、成语病句这些死记硬背的基础分拿稳，作文稍微总结一下套路，提个 15-20 分是完全有可能的。</p>
+
+            <h2>⚙️ 数学与理综的平稳过渡</h2>
+            <p>数学 96 分中规中矩，理综三科（物理44、化学49、生物50）分数十分平均。接下来理科复习的策略应该是：<strong>别死磕压轴大题</strong>。把精力全放在第一道选择题、实验题的基础问、以及大题的第一小问上。每一科多拿 5 分，总分就能再上一个台阶。</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="historyModal">
+        <div class="modal-content">
+            <h2 id="modalTitle" style="color: var(--md-sys-color-primary); margin-top: 0;">学科全记录</h2>
+            <div id="modalData" style="line-height: 1.6; margin: 15px 0;"></div>
+            <div class="close-btn" onclick="closeModal()">关 闭</div>
+        </div>
+    </div>
+
+    <script src="../../scripts/db.js"></script>
+</body>
+</html>

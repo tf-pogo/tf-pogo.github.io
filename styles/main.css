@@ -1,69 +1,48 @@
 /* =========================================
-   Pogo 的个人主页 - MD3 + 极光多彩优化版
+   Pogo 的个人主页 - Material 3 Expressive (M3E) 风格
    ========================================= */
 
-/* /* 🌟 1. 色彩体系：淡蓝色主题 (Light Blue Theme) */
+/* 🌟 1. 色彩体系：保留淡蓝极光底色，增强容器对比度 */
 :root {
-    /* 浅色模式 - 清新的天空蓝调 */
-    --md-sys-color-primary: #0284C7; /* 主色：明亮的天空蓝 */
+    --md-sys-color-primary: #0284C7; 
     --md-sys-color-on-primary: #FFFFFF;
-    --md-sys-color-secondary-container: #E0F2FE; /* 按钮底色：极淡的蓝冰色 */
+    --md-sys-color-secondary-container: #E0F2FE; 
     --md-sys-color-on-secondary-container: #0369A1;
     
-    /* 背景极光三原色 - 替换为蓝/青/白 */
-    --bg-aurora-1: #E0F2FE; /* 浅蓝 */
-    --bg-aurora-2: #F0F9FF; /* 更淡的蓝 */
-    --bg-aurora-3: #CFFAFE; /* 淡青色 */
+    --bg-aurora-1: #E0F2FE; 
+    --bg-aurora-2: #F0F9FF; 
+    --bg-aurora-3: #CFFAFE; 
     
-    /* 卡片颜色保持微透明 */
-    --md-sys-color-surface-container: rgba(255, 255, 255, 0.7);
-    --md-sys-color-surface-container-highest: rgba(255, 255, 255, 0.85);
-    --md-sys-color-outline: #94A3B8;
+    /* M3E 强调更纯粹的容器质感 */
+    --md-sys-color-surface: rgba(255, 255, 255, 0.85);
+    --md-sys-color-surface-container: rgba(255, 255, 255, 0.6);
+    --md-sys-color-surface-container-highest: rgba(255, 255, 255, 0.95);
+    --md-sys-color-outline: #64748B;
     --md-sys-color-on-background: #0F172A;
 }
 
 body.dark-mode {
-    /* 深色模式 - 深邃的海军蓝与冰蓝发光 */
-    --md-sys-color-primary: #7DD3FC; /* 暗黑下的高亮冰蓝 */
+    --md-sys-color-primary: #7DD3FC; 
     --md-sys-color-on-primary: #003258;
-    --md-sys-color-secondary-container: #0C4A6E; /* 按钮底色：深海蓝 */
+    --md-sys-color-secondary-container: #0C4A6E; 
     --md-sys-color-on-secondary-container: #E0F2FE;
     
-    /* 暗色背景极光 */
-    --bg-aurora-1: #0F172A; /* 深沉暗蓝 */
-    --bg-aurora-2: #1E3A8A; /* 宝石蓝 */
-    --bg-aurora-3: #082F49; /* 深海青 */
+    --bg-aurora-1: #0F172A; 
+    --bg-aurora-2: #1E3A8A; 
+    --bg-aurora-3: #082F49; 
     
-    /* 卡片颜色 */
-    --md-sys-color-surface-container: rgba(30, 41, 59, 0.75); 
-    --md-sys-color-surface-container-highest: rgba(51, 65, 85, 0.85);
-    --md-sys-color-outline: #64748B;
+    --md-sys-color-surface: rgba(15, 23, 42, 0.85);
+    --md-sys-color-surface-container: rgba(30, 41, 59, 0.6); 
+    --md-sys-color-surface-container-highest: rgba(30, 41, 59, 0.95);
+    --md-sys-color-outline: #94A3B8;
     --md-sys-color-on-background: #F8FAFC;
 }
 
-body.dark-mode {
-    /* 深色模式 (提亮底色，变成高级的深邃夜空蓝/紫，不再死黑) */
-    --md-sys-color-primary: #D0BCFF;
-    --md-sys-color-on-primary: #381E72;
-    --md-sys-color-secondary-container: #4A4458;
-    --md-sys-color-on-secondary-container: #E8DEF8;
-    
-    /* 暗色背景极光三原色 */
-    --bg-aurora-1: #2E2545; /* 偏亮的深紫 */
-    --bg-aurora-2: #1E293B; /* 偏亮的深蓝 */
-    --bg-aurora-3: #3F2A35; /* 偏亮的深绯红 */
-    
-    /* 卡片颜色提亮并加入微透明 */
-    --md-sys-color-surface-container: rgba(54, 52, 63, 0.75); 
-    --md-sys-color-surface-container-highest: rgba(68, 65, 78, 0.85);
-    --md-sys-color-outline: #A19DAC;
-    --md-sys-color-on-background: #F8FAFC;
-}
-
-/* 🌟 2. 基础页面设置 & 多彩极光背景 */
+/* 🌟 2. 基础页面设置 */
 * {
     box-sizing: border-box;
-    font-family: system-ui, -apple-system, Roboto, "Helvetica Neue", sans-serif;
+    /* M3E 推荐使用更具现代感的字体族 */
+    font-family: "Google Sans", system-ui, -apple-system, Roboto, sans-serif;
 }
 body {
     margin: 0;
@@ -74,7 +53,6 @@ body {
     align-items: center;
     color: var(--md-sys-color-on-background);
     
-    /* 核心魔法：多彩极光网格渐变 */
     background-color: var(--bg-aurora-1);
     background-image: 
         radial-gradient(circle at 15% 50%, var(--bg-aurora-1), transparent 60%),
@@ -84,120 +62,133 @@ body {
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* 🌟 3. 主容器 (大卡片) */
+/* 🌟 3. 主容器：M3E 标志性的超大圆角与宽松间距 */
 .glass-container {
     background-color: var(--md-sys-color-surface-container);
-    /* 加上磨砂效果，让底层极光晕染开来 */
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     width: 100%;
-    max-width: 650px;
-    padding: 40px;
-    border-radius: 28px;
-    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.15); /* 极细的高光边缘 */
+    max-width: 700px; /* 稍微拉宽一点，给排版空间 */
+    padding: 56px 48px; /* M3E 的留白非常奢侈 */
+    border-radius: 48px; /* 极端的大圆角 */
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.04); /* 极度克制的阴影 */
+    border: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;
     transition: background-color 0.4s ease;
 }
-body.dark-mode .glass-container {
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
+body.dark-mode .glass-container { border: 1px solid rgba(255, 255, 255, 0.05); }
 
-/* 🌟 4. 头像与文本 */
+/* 🌟 4. 头像与 M3E 夸张排版 (Display Typography) */
 .avatar-wrapper {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 20px;
+    width: 120px; /* 头像放大 */
+    height: 120px;
+    margin: 0 auto 24px;
     cursor: pointer;
     border-radius: 50%;
-    border: 3px solid var(--md-sys-color-surface-container-highest);
+    border: 4px solid var(--md-sys-color-surface-container-highest);
     overflow: hidden;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
-.avatar-wrapper:active { transform: scale(0.95); }
+.avatar-wrapper:active { transform: scale(0.9); }
 .avatar { width: 100%; height: 100%; object-fit: cover; }
 
 .site-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0 0 10px;
+    /* M3E 的灵魂：巨大、粗体、紧凑的字间距 */
+    font-size: 2.75rem; 
+    font-weight: 800;
+    letter-spacing: -0.04em; 
+    margin: 0 0 16px;
     color: var(--md-sys-color-on-background);
 }
 .site-description {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    line-height: 1.7;
     color: var(--md-sys-color-outline);
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    font-weight: 500;
 }
 
-/* 🌟 5. 导航按钮 (Tonal Buttons) */
+/* 🌟 5. 导航按钮：厚重的 Tonal 按钮 */
 .menu-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 40px;
+    gap: 16px; /* 间距拉大 */
+    margin-bottom: 56px;
 }
 .menu {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     text-decoration: none;
     background-color: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
-    border-radius: 999px;
-    height: 48px;
-    padding: 0 24px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.2s ease;
+    border-radius: 100px;
+    height: 56px; /* M3E 的按钮更高更厚实 */
+    padding: 0 32px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
+/* M3E 交互：状态层 (State Layer) 强调改变背景色和细微缩放，而非加阴影 */
 .menu:hover {
-    filter: brightness(0.92);
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    filter: brightness(0.9);
+    transform: scale(1.02);
 }
-body.dark-mode .menu:hover { filter: brightness(1.15); }
+.menu:active { transform: scale(0.98); }
+body.dark-mode .menu:hover { filter: brightness(1.2); }
 
-/* 🌟 6. 文章列表 (Cards) */
+/* 🌟 6. 文章列表：高对比度大卡片 */
 .post-container {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
 }
 .post a {
     display: block;
     background-color: var(--md-sys-color-surface-container-highest);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 20px 24px;
-    border-radius: 16px;
+    padding: 28px 32px;
+    border-radius: 28px; /* 内部卡片也采用巨大的圆角 */
     text-decoration: none;
     color: var(--md-sys-color-on-background);
     text-align: left;
-    transition: all 0.2s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
-body.dark-mode .post a { border: 1px solid rgba(255, 255, 255, 0.03); }
+body.dark-mode .post a { border: 1px solid rgba(255, 255, 255, 0.05); }
 
 .post a:hover {
-    background-color: var(--md-sys-color-surface-container);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
-    transform: translateY(-2px);
+    background-color: var(--md-sys-color-surface);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.06);
 }
-.post-title { margin: 0 0 8px; font-size: 1.25rem; font-weight: 600; }
-.post-info { font-size: 0.85rem; color: var(--md-sys-color-outline); display: flex; gap: 15px; }
+.post-title { 
+    margin: 0 0 12px; 
+    font-size: 1.5rem; /* 标题更大 */
+    font-weight: 700; 
+    letter-spacing: -0.02em;
+}
+.post-info { 
+    font-size: 0.95rem; 
+    color: var(--md-sys-color-outline); 
+    display: flex; 
+    gap: 16px; 
+    font-weight: 500;
+}
 
 /* 页脚 */
-.site-footer { margin-top: 30px; font-size: 0.85rem; color: var(--md-sys-color-outline); }
+.site-footer { margin-top: 40px; font-size: 0.9rem; color: var(--md-sys-color-outline); font-weight: 500; }
 
 /* =========================================
-   📱 响应式：手机端 3x2 图标矩阵排版
+   📱 响应式：手机端
    ========================================= */
 @media (max-width: 899px) {
-    .menu-container { max-width: 180px; margin: 0 auto 35px auto; justify-content: center; }
-    .icon-btn { width: 48px; height: 48px; padding: 0; justify-content: center; }
+    .glass-container { padding: 40px 24px; border-radius: 36px; }
+    .site-title { font-size: 2.2rem; }
+    .menu-container { max-width: 220px; margin: 0 auto 40px auto; justify-content: center; gap: 12px; }
+    .icon-btn { width: 56px; height: 56px; padding: 0; justify-content: center; }
     .icon-btn .nav-text { display: none; }
-    .icon-btn i { font-size: 1.3rem; margin: 0; }
+    .icon-btn i { font-size: 1.5rem; margin: 0; }
     .about-btn { width: 100%; margin-top: 8px; justify-content: center; }
 }
 
@@ -206,22 +197,20 @@ body.dark-mode .post a { border: 1px solid rgba(255, 255, 255, 0.03); }
    ========================================= */
 @media (min-width: 900px) {
     .glass-container {
-        max-width: 1000px; display: grid; grid-template-columns: 300px 1fr;
-        grid-template-rows: 1fr auto; gap: 0 60px; padding: 50px 60px; text-align: left;
+        max-width: 1100px; display: grid; grid-template-columns: 360px 1fr;
+        grid-template-rows: 1fr auto; gap: 0 80px; padding: 64px 80px; text-align: left;
     }
-    .site-header { grid-column: 1; grid-row: 1 / 3; position: sticky; top: 50px; height: fit-content; }
+    .avatar-wrapper { margin: 0 0 32px 0; width: 140px; height: 140px; }
+    .site-header { grid-column: 1; grid-row: 1 / 3; position: sticky; top: 64px; height: fit-content; }
     .menu-container, .site-header { justify-content: flex-start; }
-    .menu-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; margin-top: 25px; }
-    .menu, .icon-btn { width: 100%; justify-content: center; }
+    .menu-container { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; margin-top: 32px; }
+    .menu, .icon-btn { width: 100%; justify-content: center; height: 56px; }
     .icon-btn .nav-text { display: inline; }
     .about-btn { grid-column: 1 / 3; }
-    .post-container { grid-column: 2; grid-row: 1; }
-    .site-footer { grid-column: 2; grid-row: 2; margin-top: 30px; text-align: left; }
-    .article-container, .archive-container { display: block !important; max-width: 800px !important; margin: 0 auto !important; }
+    .post-container { grid-column: 2; grid-row: 1; gap: 24px;}
+    .site-footer { grid-column: 2; grid-row: 2; margin-top: 40px; text-align: left; }
+    .article-container, .archive-container { display: block !important; max-width: 860px !important; margin: 0 auto !important; padding: 56px 64px !important;}
 }
 
-/* =========================================
-   动画：深色模式切换扩散动画
-   ========================================= */
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 ::view-transition-new(root) { z-index: 9999; }
