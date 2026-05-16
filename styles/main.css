@@ -239,3 +239,65 @@ body.dark-mode .post a { border: 1px solid rgba(255, 255, 255, 0.05); }
 
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 ::view-transition-new(root) { z-index: 9999; }
+/* =========================================
+   📰 全局文章页与表格样式 (一统天下)
+   ========================================= */
+.article-container { max-width: 860px !important; margin: 0 auto !important; display: block !important; padding: 56px 64px !important; }
+@media (max-width: 899px) { .article-container { padding: 40px 24px !important; } }
+
+.back-btn { display: inline-flex; align-items: center; gap: 5px; margin-bottom: 32px; color: var(--md-sys-color-primary); font-weight: 700; text-decoration: none; transition: opacity 0.2s ease; font-size: 1.1rem; }
+.back-btn:hover { opacity: 0.8; }
+
+.article-content { line-height: 1.8; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(150, 150, 150, 0.2); font-size: 1.05rem; }
+.article-content h2 { margin: 40px 0 20px; font-size: 1.6rem; color: var(--md-sys-color-primary); font-weight: 800; letter-spacing: -0.02em; }
+
+/* 🌟 表格整体样式 */
+.score-table { width: 100%; border-collapse: collapse; margin: 32px 0; border-radius: 24px; overflow: hidden; background-color: var(--md-sys-color-surface-container-highest); border: 1px solid rgba(255, 255, 255, 0.2); }
+.score-table th, .score-table td { padding: 16px; text-align: center; border-bottom: 1px solid rgba(150, 150, 150, 0.1); }
+.score-table th { background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); font-weight: 700; font-size: 1.1rem; }
+
+/* 🌟 第一列单元格：去掉厚重的内边距，把空间全部让给胶囊 */
+.score-table td:first-child { 
+    padding: 6px 8px !important; /* 上下左右只留极小的缝隙，让胶囊能撑满格子但不至于贴死边框 */
+    width: 28%; /* 稍微收紧第一列宽度，让满格胶囊显得更修长高级 */
+    vertical-align: middle; 
+}
+
+/* 🌟 完美的 M3E 满格胶囊 */
+.subject-link { 
+    color: var(--md-sys-color-primary); 
+    font-weight: 800; 
+    cursor: pointer; 
+    text-decoration: none; 
+    transition: all 0.25s cubic-bezier(0.2, 0, 0, 1); 
+    
+    /* 核心魔法：强行拉满宽度，占据整个格子！ */
+    display: flex; 
+    width: 100%; 
+    box-sizing: border-box;
+    
+    align-items: center; 
+    justify-content: center; 
+    gap: 8px; 
+    padding: 10px 0; /* 胶囊自身的厚度 */
+    border-radius: 100px; /* 依然保持极其圆润的胶囊形状 */
+    background: transparent;
+}
+
+.subject-link:hover { 
+    background: var(--md-sys-color-primary); 
+    color: var(--md-sys-color-on-primary); 
+    /* 满格胶囊悬浮时，缩放幅度稍微改小一点，避免挡住右边的分数 */
+    transform: scale(1.02); 
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25); 
+}
+body.dark-mode .subject-link:hover { 
+    box-shadow: 0 4px 12px rgba(125, 211, 252, 0.15); 
+}
+/* 🌟 统一弹窗样式 */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 9999; }
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-content { background: var(--md-sys-color-surface-container-highest); color: var(--md-sys-color-on-background); padding: 40px; border-radius: 32px; max-width: 420px; width: 90%; transform: translateY(20px); transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 24px 48px rgba(0,0,0,0.1); }
+.modal-overlay.active .modal-content { transform: translateY(0); }
+.close-btn { margin-top: 24px; display: block; width: 100%; padding: 16px; background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); text-align: center; border-radius: 100px; cursor: pointer; font-weight: 700; transition: all 0.2s ease; }
+.close-btn:hover { filter: brightness(0.9); }
