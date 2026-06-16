@@ -301,3 +301,43 @@ body.dark-mode .subject-link:hover {
 .modal-overlay.active .modal-content { transform: translateY(0); }
 .close-btn { margin-top: 24px; display: block; width: 100%; padding: 16px; background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); text-align: center; border-radius: 100px; cursor: pointer; font-weight: 700; transition: all 0.2s ease; }
 .close-btn:hover { filter: brightness(0.9); }
+/* =========================================
+   🌟 全局入场动画：极其舒缓、带有呼吸感的上移
+   ========================================= */
+@keyframes fadeInUpResp {
+    0% {
+        opacity: 0;
+        transform: translateY(35px); /* 从下方稍微深一点的地方浮起 */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🌟 第一梯队：主盒子（背景）最先登场，缓慢铺开 */
+.glass-container {
+    /* 核心魔法：1.2秒超长持续时间，以及极致丝滑的阻尼曲线 */
+    animation: fadeInUpResp 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 🌟 第二梯队：给里面的元素统一装上动画，并规定它们“听口令依次入场” */
+.avatar-wrapper, 
+.site-title, 
+.site-description, 
+.menu, 
+.post a {
+    /* 动画时长设为 1 秒，比主背景稍微快一点点收尾 */
+    animation: fadeInUpResp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 🌟 核心排期表 (Animation Delay)：决定谁先出场，谁后出场 */
+.avatar-wrapper { animation-delay: 0.15s; }  /* 头像紧跟着背景浮现 */
+.site-title { animation-delay: 0.25s; }      /* 标题随后 */
+.site-description { animation-delay: 0.35s; } /* 个人简介再跟上 */
+
+/* 选项按钮（B站、GitHub等）：稍微晚半拍，制造一点视觉停留 */
+.menu { animation-delay: 0.5s; }
+
+/* 文章卡片：最后压轴出场，像瀑布一样坠落安稳 */
+.post a { animation-delay: 0.65s; }
