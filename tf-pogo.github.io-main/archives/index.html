@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>文章归档 - Pogo个人主页</title>
+    
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <style>
+        .archive-container { max-width: 700px; }
+        .back-btn { display: inline-flex; align-items: center; gap: 5px; margin-bottom: 25px; color: #4f46e5; font-weight: 600; transition: transform 0.3s ease; }
+        .back-btn:hover { transform: translateX(-5px); }
+        
+        /* 专门给归档页写的年份标题样式 */
+        .year-title {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin: 30px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed rgba(79, 70, 229, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-container archive-container">
+        
+        <a href="../index.html" class="back-btn">
+            <i class="ri-arrow-left-line"></i> 返回首页
+        </a>
+        
+        <h1 class="site-title" style="font-size: 1.8rem; margin: 0 0 5px;">文章归档</h1>
+        <p style="color: #64748b; margin-bottom: 30px;">这里记录了我的所有足迹 👣</p>
+
+        <div class="post-container">
+            
+
+            <h2 class="year-title">2023</h2>
+            <article class="post">
+                <a href="../post/testing/index.html">
+                    <h2 class="post-title">testing</h2>
+                    <div class="post-info">
+                        <span><i class="ri-calendar-line"></i> 07-30</span>
+                    </div>
+                </a>
+            </article>
+            
+            <article class="post">
+                <a href="../post/11111/index.html">
+                    <h2 class="post-title">hi！</h2>
+                    <div class="post-info">
+                        <span><i class="ri-calendar-line"></i> 07-30</span>
+                    </div>
+                </a>
+            </article>
+
+            <article class="post">
+                <a href="../post/huighiugyu/index.html">
+                    <h2 class="post-title">主播帅不帅</h2>
+                    <div class="post-info">
+                        <span><i class="ri-calendar-line"></i> 07-30</span>
+                    </div>
+                </a>
+            </article>
+
+        </div>
+        
+    </div>
+</body>
+</html>
