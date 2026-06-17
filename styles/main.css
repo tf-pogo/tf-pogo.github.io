@@ -58,7 +58,10 @@ body {
         radial-gradient(circle at 15% 50%, var(--bg-aurora-1), transparent 60%),
         radial-gradient(circle at 85% 30%, var(--bg-aurora-2), transparent 60%),
         radial-gradient(circle at 50% 80%, var(--bg-aurora-3), transparent 60%);
-    background-attachment: fixed;
+    
+    background-size: 200% 200%; /* 把极光底图放大一倍 */
+    animation: ambientAurora 18s ease-in-out infinite alternate; /* 18秒一次的超慢速平滑游走 */
+    
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
@@ -75,7 +78,27 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;
     transition: background-color 0.4s ease;
+    animation: fadeInUpResp 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+.avatar-wrapper, 
+.site-title, 
+.site-description, 
+.menu, 
+.post a {
+    /* 动画时长设为 1 秒，比主背景稍微快一点点收尾 */
+    animation: fadeInUpResp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 🌟 核心排期表 (Animation Delay)：决定谁先出场，谁后出场 */
+.avatar-wrapper { animation-delay: 0.15s; }  /* 头像紧跟着背景浮现 */
+.site-title { animation-delay: 0.25s; }      /* 标题随后 */
+.site-description { animation-delay: 0.35s; } /* 个人简介再跟上 */
+
+/* 选项按钮（B站、GitHub等）：稍微晚半拍，制造一点视觉停留 */
+.menu { animation-delay: 0.5s; }
+
+/* 文章卡片：最后压轴出场 */
+.post a { animation-delay: 0.65s; }
 body.dark-mode .glass-container { border: 1px solid rgba(255, 255, 255, 0.05); }
 
 /* 🌟 4. 头像与 M3E 夸张排版 (Display Typography) */
@@ -341,3 +364,27 @@ body.dark-mode .subject-link:hover {
 
 /* 文章卡片：最后压轴出场，像瀑布一样坠落安稳 */
 .post a { animation-delay: 0.65s; }
+/* =========================================
+   🌟 全局入场动画：极其舒缓、带有呼吸感的上移
+   ========================================= */
+@keyframes fadeInUpResp {
+    0% {
+        opacity: 0;
+        transform: translateY(35px); /* 初始状态：完全透明，且在下方 35px 处 */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* 最终状态：完全不透明，回到原本的位置 */
+    }
+}
+@keyframes ambientAurora {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}
