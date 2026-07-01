@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="绵阳二诊成绩复盘 — 总分460，班排第8。可交互学科轨迹追踪。" />
     <title>高三绵阳二诊成绩复盘 & 历史轨迹追踪 - Pogo个人主页</title>
-    
+
     <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-    
 </head>
 <body>
     <div class="glass-container article-container">
         <a href="../../index.html" class="back-btn"><i class="ri-arrow-left-line"></i> 返回首页</a>
-        
+
         <h1 class="site-title" style="font-size: 1.8rem; margin: 0 0 10px;">绵阳二诊成绩复盘 & 学科追踪</h1>
         <div class="post-info">
             <span><i class="ri-calendar-line"></i> 2026-05-01</span>
@@ -21,7 +21,7 @@
 
         <div class="article-content">
             <p>这是之前考的绵阳二诊成绩，总分 <strong>460分</strong>。班级第 8 名，校排 346 名。借着这次建网站的机会，我把历次成绩做了一个小数据库。<strong>（点一下表格里带有虚线底纹的学科名字试试看！）</strong></p>
-            
+
             <h2>📊 绵阳二诊成绩单</h2>
             <table class="score-table">
                 <thead>
@@ -42,25 +42,19 @@
                 </tbody>
             </table>
 
-            <h2>🔍 考后深度分析</h2>
-            <p><strong>🔥 语数外的巅峰体验：</strong> 这次绵二的数学（108分）和英语（117分）发挥得非常出色！校排都冲进了前150。说明我的主课底子其实是很硬的，只要手感在，分数绝对能稳住。</p>
-            <p><strong>🧊 理综的滑铁卢：</strong> 相比于抢眼的数学和英语，理综确实拖了后腿，尤其是化学（34分），班排掉到了46名。基础知识出现断层，大题估计也是一头雾水。</p>
-            <p><strong>💡 有趣的对比发现：</strong> 如果对比后来的德阳三诊，会发现我的<strong>理综（物化生）在后期有了明显的触底反弹</strong>，但语数外反而有小幅回落。这说明在复习策略上，顾此失彼是常态。最后这一个月，必须要做到<strong>“每天都有各科的温度”</strong>，不能只看一科！</p>
+            <h2>🔥 语数外的巅峰体验</h2>
+            <p>这次绵二的数学（108分）和英语（117分）发挥得非常出色！校排都冲进了前150。说明我的主课底子其实是很硬的，只要手感在，分数绝对能稳住。</p>
+            <h2>🧊 理综的滑铁卢</h2>
+            <p>相比于抢眼的数学和英语，理综确实拖了后腿，尤其是化学（34分），班排掉到了46名。基础知识出现断层，大题估计也是一头雾水。</p>
+            <h2>💡 有趣的对比发现</h2>
+            <p>如果对比后来的德阳三诊，会发现我的<strong>理综（物化生）在后期有了明显的触底反弹</strong>，但语数外反而有小幅回落。这说明在复习策略上，顾此失彼是常态。最后这一个月，必须要做到<strong>"每天都有各科的温度"</strong>，不能只看一科！</p>
         </div>
     </div>
 
     <div class="modal-overlay" id="historyModal">
         <div class="modal-content">
-            <h2 id="modalTitle" style="margin-top: 0; color: #4f46e5;">学科轨迹</h2>
-            <p id="modalData" style="line-height: 2;"></p>
-            <div class="close-btn" onclick="closeModal()">我知道了</div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="historyModal">
-        <div class="modal-content">
-            <h2 id="modalTitle" style="color: #4f46e5; margin-top: 0;">学科全记录</h2>
-            <div id="modalData" style="line-height: 1.6; margin: 15px 0;"></div>
+            <h2 id="modalTitle" style="color: var(--color-primary); margin-top: 0; font-weight: 700; font-size: 1.4rem;">学科全记录</h2>
+            <div id="modalData" style="line-height: 1.8; margin: 20px 0; font-size: 1.05rem;"></div>
             <div class="close-btn" onclick="closeModal()">关 闭</div>
         </div>
     </div>

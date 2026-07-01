@@ -27,7 +27,7 @@ function openModal(subject) {
     const data = scoreDB[subject];
     const modal = document.getElementById('historyModal');
     document.getElementById('modalTitle').innerText = `${subject} · 历次成绩全记录`;
-    
+
     let htmlStr = '';
     let prevScore = null;
 
@@ -39,15 +39,15 @@ function openModal(subject) {
             let diff = score - prevScore;
             if (diff > 0) trend = `<span class="trend-up" style="margin-left:10px;">(↑ 进步 ${diff} 分 🔥)</span>`;
             else if (diff < 0) trend = `<span class="trend-down" style="margin-left:10px;">(↓ 退步 ${Math.abs(diff)} 分 ⚠️)</span>`;
-            else trend = `<span style="color: #94a3b8; margin-left:10px;">(持平 🛡️)</span>`;
+            else trend = `<span style="color: var(--text-tertiary); margin-left:10px;">(持平 🛡️)</span>`;
         }
-        
+
         // 生成每一行的数据
         htmlStr += `
             <div style="padding: 12px 0; border-bottom: 1px dashed rgba(150,150,150,0.3); display: flex; justify-content: space-between; align-items: center;">
-                <span style="color: #64748b;">${examName}</span>
+                <span style="color: var(--text-secondary);">${examName}</span>
                 <div>
-                    <strong style="font-size: 1.2em; color: #4f46e5;">${score} 分</strong>
+                    <strong style="font-size: 1.2em; color: var(--color-primary);">${score} 分</strong>
                     ${trend}
                 </div>
             </div>`;
@@ -56,7 +56,7 @@ function openModal(subject) {
 
     // 以后高考出了，这里还可以加一句霸气的话
     if (Object.keys(data).length >= 3) {
-        htmlStr += `<div style="text-align: center; margin-top: 15px; color: #ec4899; font-weight: bold;">高考必胜！🚀</div>`;
+        htmlStr += `<div style="text-align: center; margin-top: 15px; color: var(--color-primary); font-weight: 600;">高考必胜！🚀</div>`;
     }
 
     document.getElementById('modalData').innerHTML = htmlStr;
@@ -112,7 +112,7 @@ const articleList = [
 (function() {
     // 立即寻找页面里所有需要抢救的错位 td
     const oldSubjectCells = document.querySelectorAll('td.subject-link');
-    
+
     // 给控制台打个报告，你可以按 F12 看看它抓到了几个
     console.log(`[Pogo专属修复机器人] 滴滴，扫描到 ${oldSubjectCells.length} 个老表格，正在执行物理切割...`);
 
@@ -120,11 +120,11 @@ const articleList = [
         // 1. 把里面的文字和点击事件拿出来
         const content = td.innerHTML;
         const clickEvent = td.getAttribute('onclick') || '';
-        
+
         // 2. 彻底扒掉 td 的属性
         td.removeAttribute('class');
         td.removeAttribute('onclick');
-        
+
         // 3. 重生为完美的居中药丸！
         td.innerHTML = `<span class="subject-link" style="display: inline-flex;" onclick="${clickEvent}">${content}</span>`;
     });
