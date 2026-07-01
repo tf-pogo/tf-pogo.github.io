@@ -1,0 +1,390 @@
+/* =========================================
+   Pogo 的个人主页 - Material 3 Expressive (M3E) 风格
+   ========================================= */
+
+/* 🌟 1. 色彩体系：保留淡蓝极光底色，增强容器对比度 */
+:root {
+    --md-sys-color-primary: #0284C7; 
+    --md-sys-color-on-primary: #FFFFFF;
+    --md-sys-color-secondary-container: #E0F2FE; 
+    --md-sys-color-on-secondary-container: #0369A1;
+    
+    --bg-aurora-1: #E0F2FE; 
+    --bg-aurora-2: #F0F9FF; 
+    --bg-aurora-3: #CFFAFE; 
+    
+    /* M3E 强调更纯粹的容器质感 */
+    --md-sys-color-surface: rgba(255, 255, 255, 0.85);
+    --md-sys-color-surface-container: rgba(255, 255, 255, 0.6);
+    --md-sys-color-surface-container-highest: rgba(255, 255, 255, 0.95);
+    --md-sys-color-outline: #64748B;
+    --md-sys-color-on-background: #0F172A;
+}
+
+body.dark-mode {
+    --md-sys-color-primary: #7DD3FC; 
+    --md-sys-color-on-primary: #003258;
+    --md-sys-color-secondary-container: #0C4A6E; 
+    --md-sys-color-on-secondary-container: #E0F2FE;
+    
+    --bg-aurora-1: #0F172A; 
+    --bg-aurora-2: #1E3A8A; 
+    --bg-aurora-3: #082F49; 
+    
+    --md-sys-color-surface: rgba(15, 23, 42, 0.85);
+    --md-sys-color-surface-container: rgba(30, 41, 59, 0.6); 
+    --md-sys-color-surface-container-highest: rgba(30, 41, 59, 0.95);
+    --md-sys-color-outline: #94A3B8;
+    --md-sys-color-on-background: #F8FAFC;
+}
+
+/* 🌟 2. 基础页面设置 */
+* {
+    box-sizing: border-box;
+    /* M3E 推荐使用更具现代感的字体族 */
+    font-family: "Google Sans", system-ui, -apple-system, Roboto, sans-serif;
+}
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--md-sys-color-on-background);
+    
+    background-color: var(--bg-aurora-1);
+    background-image: 
+        radial-gradient(circle at 15% 50%, var(--bg-aurora-1), transparent 60%),
+        radial-gradient(circle at 85% 30%, var(--bg-aurora-2), transparent 60%),
+        radial-gradient(circle at 50% 80%, var(--bg-aurora-3), transparent 60%);
+    
+    background-size: 200% 200%; /* 把极光底图放大一倍 */
+    animation: ambientAurora 18s ease-in-out infinite alternate; /* 18秒一次的超慢速平滑游走 */
+    
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* 🌟 3. 主容器：M3E 标志性的超大圆角与宽松间距 */
+.glass-container {
+    background-color: var(--md-sys-color-surface-container);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    width: 100%;
+    max-width: 700px; /* 稍微拉宽一点，给排版空间 */
+    padding: 56px 48px; /* M3E 的留白非常奢侈 */
+    border-radius: 48px; /* 极端的大圆角 */
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.04); /* 极度克制的阴影 */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    transition: background-color 0.4s ease;
+    animation: fadeInUpResp 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.avatar-wrapper, 
+.site-title, 
+.site-description, 
+.menu, 
+.post a {
+    /* 动画时长设为 1 秒，比主背景稍微快一点点收尾 */
+    animation: fadeInUpResp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 🌟 核心排期表 (Animation Delay)：决定谁先出场，谁后出场 */
+.avatar-wrapper { animation-delay: 0.15s; }  /* 头像紧跟着背景浮现 */
+.site-title { animation-delay: 0.25s; }      /* 标题随后 */
+.site-description { animation-delay: 0.35s; } /* 个人简介再跟上 */
+
+/* 选项按钮（B站、GitHub等）：稍微晚半拍，制造一点视觉停留 */
+.menu { animation-delay: 0.5s; }
+
+/* 文章卡片：最后压轴出场 */
+.post a { animation-delay: 0.65s; }
+body.dark-mode .glass-container { border: 1px solid rgba(255, 255, 255, 0.05); }
+
+/* 🌟 4. 头像与 M3E 夸张排版 (Display Typography) */
+.avatar-wrapper {
+    width: 120px; /* 头像放大 */
+    height: 120px;
+    margin: 0 auto 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 4px solid var(--md-sys-color-surface-container-highest);
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+.avatar-wrapper:active { transform: scale(0.9); }
+.avatar { width: 100%; height: 100%; object-fit: cover; }
+
+.site-title {
+    /* M3E 的灵魂：巨大、粗体、紧凑的字间距 */
+    font-size: 2.75rem; 
+    font-weight: 800;
+    letter-spacing: -0.04em; 
+    margin: 0 0 16px;
+    color: var(--md-sys-color-on-background);
+}
+.site-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--md-sys-color-outline);
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+/* 🌟 5. 导航按钮：厚重的 Tonal 按钮 */
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px; /* 间距拉大 */
+    margin-bottom: 56px;
+}
+.menu {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    border-radius: 100px;
+    height: 56px; /* M3E 的按钮更高更厚实 */
+    padding: 0 32px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+/* M3E 交互：状态层 (State Layer) 强调改变背景色和细微缩放，而非加阴影 */
+.menu:hover {
+    filter: brightness(0.9);
+    transform: scale(1.02);
+}
+.menu:active { transform: scale(0.98); }
+body.dark-mode .menu:hover { filter: brightness(1.2); }
+
+/* 🌟 6. 文章列表：高对比度大卡片 */
+.post-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.post a {
+    display: block;
+    background-color: var(--md-sys-color-surface-container-highest);
+    padding: 28px 32px;
+    border-radius: 28px; /* 内部卡片也采用巨大的圆角 */
+    text-decoration: none;
+    color: var(--md-sys-color-on-background);
+    text-align: left;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+body.dark-mode .post a { border: 1px solid rgba(255, 255, 255, 0.05); }
+
+.post a:hover {
+    background-color: var(--md-sys-color-surface);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.06);
+}
+.post-title { 
+    margin: 0 0 12px; 
+    font-size: 1.5rem; /* 标题更大 */
+    font-weight: 700; 
+    letter-spacing: -0.02em;
+}
+.post-info { 
+    font-size: 0.95rem; 
+    color: var(--md-sys-color-outline); 
+    display: flex; 
+    gap: 16px; 
+    font-weight: 500;
+}
+
+/* 页脚 */
+.site-footer { margin-top: 40px; font-size: 0.9rem; color: var(--md-sys-color-outline); font-weight: 500; }
+
+/* =========================================
+   📱 响应式：手机端
+   ========================================= */
+@media (max-width: 899px) {
+    .glass-container { padding: 40px 24px; border-radius: 36px; }
+    .site-title { font-size: 2.2rem; }
+    
+    /* 🌟 M3E 手机端按钮重构：释放呼吸感 */
+    .menu-container { 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 280px; /* 放宽限制，让排列更舒展 */
+        margin: 0 auto 48px auto; 
+        gap: 16px; /* M3E 标志性的宽松间距 */
+    }
+    
+    .icon-btn { 
+        width: 64px; /* 增大触摸面积 */
+        height: 64px; 
+        padding: 0; 
+        justify-content: center; 
+        /* 魔法在这里：不用纯圆，用 M3 极具高级感的超大圆角矩形 */
+        border-radius: 24px; 
+    }
+    .icon-btn .nav-text { display: none; }
+    .icon-btn i { font-size: 1.75rem; margin: 0; } /* 图标跟着放大 */
+    
+    .about-btn { 
+        width: 100%; 
+        height: 64px; /* 和上面的图标保持极其统一的厚度 */
+        margin-top: 8px; 
+        justify-content: center; 
+        border-radius: 24px; /* 统一的 M3E 圆角语言 */
+        font-size: 1.1rem;
+    }
+}
+
+/* =========================================
+   💻 响应式：PC端大屏 双栏布局
+   ========================================= */
+@media (min-width: 900px) {
+    .glass-container {
+        max-width: 1100px; display: grid; grid-template-columns: 360px 1fr;
+        grid-template-rows: 1fr auto; gap: 0 80px; padding: 64px 80px; text-align: left;
+    }
+    .avatar-wrapper { margin: 0 0 32px 0; width: 140px; height: 140px; }
+    .site-header { grid-column: 1; grid-row: 1 / 3; position: sticky; top: 64px; height: fit-content; }
+    .menu-container, .site-header { justify-content: flex-start; }
+    .menu-container { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; margin-top: 32px; }
+    .menu, .icon-btn { width: 100%; justify-content: center; height: 56px; }
+    .icon-btn .nav-text { display: inline; }
+    .about-btn { grid-column: 1 / 3; }
+    .post-container { grid-column: 2; grid-row: 1; gap: 24px;}
+    .site-footer { grid-column: 2; grid-row: 2; margin-top: 40px; text-align: left; }
+    .article-container, .archive-container { display: block !important; max-width: 860px !important; margin: 0 auto !important; padding: 56px 64px !important;}
+}
+
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { z-index: 9999; }
+/* =========================================
+   📰 全局文章页与表格样式 (一统天下)
+   ========================================= */
+.article-container { max-width: 860px !important; margin: 0 auto !important; display: block !important; padding: 56px 64px !important; }
+@media (max-width: 899px) { .article-container { padding: 40px 24px !important; } }
+
+.back-btn { display: inline-flex; align-items: center; gap: 5px; margin-bottom: 32px; color: var(--md-sys-color-primary); font-weight: 700; text-decoration: none; transition: opacity 0.2s ease; font-size: 1.1rem; }
+.back-btn:hover { opacity: 0.8; }
+
+.article-content { line-height: 1.8; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(150, 150, 150, 0.2); font-size: 1.05rem; }
+.article-content h2 { margin: 40px 0 20px; font-size: 1.6rem; color: var(--md-sys-color-primary); font-weight: 800; letter-spacing: -0.02em; }
+
+/* 🌟 表格整体样式 */
+.score-table { width: 100%; border-collapse: collapse; margin: 32px 0; border-radius: 24px; overflow: hidden; background-color: var(--md-sys-color-surface-container-highest); border: 1px solid rgba(255, 255, 255, 0.2); }
+.score-table th, .score-table td { padding: 16px; text-align: center; border-bottom: 1px solid rgba(150, 150, 150, 0.1); }
+.score-table th { background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); font-weight: 700; font-size: 1.1rem; }
+
+/* 🌟 第一列单元格：去掉厚重的内边距，把空间全部让给胶囊 */
+.score-table td:first-child { 
+    padding: 6px 8px !important; /* 上下左右只留极小的缝隙，让胶囊能撑满格子但不至于贴死边框 */
+    width: 28%; /* 稍微收紧第一列宽度，让满格胶囊显得更修长高级 */
+    vertical-align: middle; 
+}
+
+/* 🌟 完美的 M3E 满格胶囊 */
+.subject-link { 
+    color: var(--md-sys-color-primary); 
+    font-weight: 800; 
+    cursor: pointer; 
+    text-decoration: none; 
+    transition: all 0.25s cubic-bezier(0.2, 0, 0, 1); 
+    
+    /* 核心魔法：强行拉满宽度，占据整个格子！ */
+    display: flex; 
+    width: 100%; 
+    box-sizing: border-box;
+    
+    align-items: center; 
+    justify-content: center; 
+    gap: 8px; 
+    padding: 10px 0; /* 胶囊自身的厚度 */
+    border-radius: 100px; /* 依然保持极其圆润的胶囊形状 */
+    background: transparent;
+}
+
+.subject-link:hover { 
+    background: var(--md-sys-color-primary); 
+    color: var(--md-sys-color-on-primary); 
+    /* 满格胶囊悬浮时，缩放幅度稍微改小一点，避免挡住右边的分数 */
+    transform: scale(1.02); 
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25); 
+}
+body.dark-mode .subject-link:hover { 
+    box-shadow: 0 4px 12px rgba(125, 211, 252, 0.15); 
+}
+/* 🌟 统一弹窗样式 */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 9999; }
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-content { background: var(--md-sys-color-surface-container-highest); color: var(--md-sys-color-on-background); padding: 40px; border-radius: 32px; max-width: 420px; width: 90%; transform: translateY(20px); transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 24px 48px rgba(0,0,0,0.1); }
+.modal-overlay.active .modal-content { transform: translateY(0); }
+.close-btn { margin-top: 24px; display: block; width: 100%; padding: 16px; background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); text-align: center; border-radius: 100px; cursor: pointer; font-weight: 700; transition: all 0.2s ease; }
+.close-btn:hover { filter: brightness(0.9); }
+/* =========================================
+   🌟 全局入场动画：极其舒缓、带有呼吸感的上移
+   ========================================= */
+@keyframes fadeInUpResp {
+    0% {
+        opacity: 0;
+        transform: translateY(35px); /* 从下方稍微深一点的地方浮起 */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🌟 第一梯队：主盒子（背景）最先登场，缓慢铺开 */
+.glass-container {
+    /* 核心魔法：1.2秒超长持续时间，以及极致丝滑的阻尼曲线 */
+    animation: fadeInUpResp 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 🌟 第二梯队：给里面的元素统一装上动画，并规定它们“听口令依次入场” */
+.avatar-wrapper, 
+.site-title, 
+.site-description, 
+.menu, 
+.post a {
+    /* 动画时长设为 1 秒，比主背景稍微快一点点收尾 */
+    animation: fadeInUpResp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 🌟 核心排期表 (Animation Delay)：决定谁先出场，谁后出场 */
+.avatar-wrapper { animation-delay: 0.15s; }  /* 头像紧跟着背景浮现 */
+.site-title { animation-delay: 0.25s; }      /* 标题随后 */
+.site-description { animation-delay: 0.35s; } /* 个人简介再跟上 */
+
+/* 选项按钮（B站、GitHub等）：稍微晚半拍，制造一点视觉停留 */
+.menu { animation-delay: 0.5s; }
+
+/* 文章卡片：最后压轴出场，像瀑布一样坠落安稳 */
+.post a { animation-delay: 0.65s; }
+/* =========================================
+   🌟 全局入场动画：极其舒缓、带有呼吸感的上移
+   ========================================= */
+@keyframes fadeInUpResp {
+    0% {
+        opacity: 0;
+        transform: translateY(35px); /* 初始状态：完全透明，且在下方 35px 处 */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* 最终状态：完全不透明，回到原本的位置 */
+    }
+}
+@keyframes ambientAurora {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}

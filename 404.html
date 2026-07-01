@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 - 页面已失联 | Pogo</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/main.css">
+    <style>
+        /* =========================================
+           404 专属 M3E 趣味排版与动画
+           ========================================= */
+        .error-container {
+            padding: 80px 40px !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 🌟 M3E 极致夸张的巨大标题 (Display Large) */
+        .error-code {
+            font-size: clamp(6rem, 15vw, 10rem); /* 根据屏幕大小自动伸缩的巨无霸字体 */
+            font-weight: 900;
+            line-height: 1;
+            margin: 0;
+            letter-spacing: -0.06em;
+            color: var(--md-sys-color-primary);
+            /* 趣味动画：悬浮跳动效果 */
+            animation: float 4s ease-in-out infinite;
+            text-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-title {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin: 24px 0 16px;
+            color: var(--md-sys-color-on-background);
+        }
+
+        .error-desc {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--md-sys-color-outline);
+            max-width: 450px;
+            margin-bottom: 48px;
+            font-weight: 500;
+        }
+
+        /* M3E 厚重救援按钮 */
+        .rescue-btn {
+            height: 64px !important;
+            padding: 0 40px !important;
+            font-size: 1.1rem !important;
+            background-color: var(--md-sys-color-primary) !important;
+            color: var(--md-sys-color-on-primary) !important;
+            border-radius: 100px !important;
+            box-shadow: 0 8px 24px rgba(2, 132, 199, 0.3) !important;
+        }
+        .rescue-btn:hover {
+            transform: translateY(-4px) scale(1.02) !important;
+            box-shadow: 0 12px 32px rgba(2, 132, 199, 0.4) !important;
+        }
+
+        /* 动画关键帧：上下悬浮 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* 背景装饰：M3E 风格的散落几何体 */
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--md-sys-color-secondary-container);
+            opacity: 0.5;
+            z-index: -1;
+        }
+        .deco-1 { width: 200px; height: 200px; top: -50px; left: -50px; }
+        .deco-2 { width: 100px; height: 100px; bottom: 40px; right: 20px; background: var(--bg-aurora-3); }
+    </style>
+</head>
+<body>
+    <div class="glass-container error-container">
+        <div class="deco-circle deco-1"></div>
+        <div class="deco-circle deco-2"></div>
+
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">该网页已被 Pogo 熟练地卸载</h2>
+        <p class="error-desc">
+            或者...你可能不小心走进了理综最后一道大题的草稿纸里。这里除了虚无，连一根辅助线都没有。
+        </p>
+        
+        <a href="./index.html" class="menu rescue-btn">
+            <i class="ri-rocket-2-fill"></i> 紧急撤离回主页
+        </a>
+    </div>
+
+    <script src="./scripts/db.js"></script>
+</body>
+</html>

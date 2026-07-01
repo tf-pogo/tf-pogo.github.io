@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://tf-pogo.github.io</id>
+    <title>Pogo个人主页</title>
+    <updated>2026-05-16T00:00:00.000Z</updated>
+    <generator>Pogo</generator>
+    <link rel="alternate" href="https://tf-pogo.github.io"/>
+    <link rel="self" href="https://tf-pogo.github.io/atom.xml"/>
+    <subtitle>我是破狗Pogo，刚刚高考完。精通 C++ / CSS / Java 等单词的拼写，熟练掌握 PS / AE / DaVinci 等软件的安装与卸载。</subtitle>
+    <logo>https://tf-pogo.github.io/images/avatar.png</logo>
+    <icon>https://tf-pogo.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2026, Pogo个人主页</rights>
+    <entry>
+        <title type="html"><![CDATA[五月模考复盘：物理的高光时刻 ⚡]]></title>
+        <id>https://tf-pogo.github.io/post/wu-yue-mo-kao/</id>
+        <link href="https://tf-pogo.github.io/post/wu-yue-mo-kao/"/>
+        <updated>2026-05-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[物理班排第4！总分428，班排16。点击查看最新数据。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[成都三诊：冰火两重天的成绩单 🔥]]></title>
+        <id>https://tf-pogo.github.io/post/cheng-du-san-zhen/</id>
+        <link href="https://tf-pogo.github.io/post/cheng-du-san-zhen/"/>
+        <updated>2026-05-02T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[总分435.5，班排26。英语班排第2，强势科目！]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[德阳三诊成绩复盘 📊]]></title>
+        <id>https://tf-pogo.github.io/post/gao-san-san-zhen/</id>
+        <link href="https://tf-pogo.github.io/post/gao-san-san-zhen/"/>
+        <updated>2026-05-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[总分498。点击学科查看与绵阳二诊的对比分析。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[绵阳二诊成绩复盘 & 学科追踪]]></title>
+        <id>https://tf-pogo.github.io/post/mian-yang-er-zhen/</id>
+        <link href="https://tf-pogo.github.io/post/mian-yang-er-zhen/"/>
+        <updated>2026-05-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[总分460，班排8。内含可交互学科成绩轨迹分析。]]></summary>
+    </entry>
+</feed>
