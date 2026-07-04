@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="高考成绩：总分510，省排121897。英语119扛大旗，化学76惊天翻盘！" />
+    <title>高考成绩复盘 - Pogo个人主页</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-container article-container">
+        <a href="../../index.html" class="back-btn"><i class="ri-arrow-left-line"></i> 返回首页</a>
+
+        <h1 class="site-title" style="font-size: 1.8rem; margin: 0 0 10px;">高考成绩：终局之战 🎓</h1>
+        <div class="post-info">
+            <span><i class="ri-calendar-line"></i> 2026-06-08</span>
+            <span><i class="ri-mouse-line"></i> 点击学科查看完整高三轨迹</span>
+        </div>
+
+        <div class="article-content">
+            <p>三年的笔芯、无数张理综卷、数不清的深夜自习——全部汇成了这张成绩单。</p>
+            <p>总分 <strong>510分</strong>，四川省排名 <strong>121897</strong>。没有班排、没有校排，这就是最终答案。点开下面每一个学科，你能看到我从绵阳二诊一路走到高考的完整轨迹。</p>
+
+            <h2>📜 高考成绩单</h2>
+            <table class="score-table">
+                <thead>
+                    <tr><th>学科 (点击查看轨迹)</th><th>成绩</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="subject-link" onclick="openModal('语文')">语文 👆</td><td><strong>96</strong></td></tr>
+                    <tr><td class="subject-link" onclick="openModal('数学')">数学 👆</td><td><strong>107</strong></td></tr>
+                    <tr><td class="subject-link" onclick="openModal('英语')">英语 👆</td><td><strong>119</strong> 🔥</td></tr>
+                    <tr><td class="subject-link" onclick="openModal('物理')">物理 👆</td><td><strong>57</strong></td></tr>
+                    <tr><td class="subject-link" onclick="openModal('化学')">化学 👆</td><td><strong>76</strong> 🚀</td></tr>
+                    <tr><td class="subject-link" onclick="openModal('生物')">生物 👆</td><td><strong>55</strong></td></tr>
+                    <tr style="font-weight: 700; background: var(--glass-bg-elevated);"><td>总计</td><td><strong>510</strong></td></tr>
+                </tbody>
+            </table>
+
+            <h2>👑 定海神针：英语 119</h2>
+            <p>回顾整个高三——绵阳二诊 117、成都三诊 116.5、德阳三诊 113、五月模考 112，再到高考 <strong>119分</strong>。英语从未跌出过 110，是所有科目里最稳的压舱石。高考更是刷新了个人最高分。词汇量和阅读语感这件事，时间不会辜负你。</p>
+
+            <h2>🚀 最大黑马：化学 76</h2>
+            <p>如果说这次高考有什么惊喜，化学当之无愧。从绵阳二诊的 <strong>34分</strong>、五月模考的 <strong>40分</strong>，一路杀到高考的 <strong>76分</strong>——近乎翻倍！这说明最后阶段的化学突击是有效的：方程式书写、实验大题模板、工业流程题的套路，这些短期内完全能提上来。化学是这次高考最漂亮的一场翻身仗。</p>
+
+            <h2>📈 稳步攀升：语文 96 & 数学 107</h2>
+            <p>语文从成都三诊低谷的 80 分，一路爬到高考的 <strong>96分</strong>，刷新了高三最好成绩。古诗文默写和作文模板的积累在关键时刻兑现了。</p>
+            <p>数学五月模考跌到 87 分之后，高考强势反弹到 <strong>107分</strong>，回到绵阳二诊的巅峰水平。选择填空的基础分没有丢，后面大题的第一问也稳住了。</p>
+
+            <h2>⚖️ 平稳收官：物理 57 & 生物 55</h2>
+            <p>物理是这次唯一略有遗憾的科目。德阳三诊冲到过 72，五月模考也有 62，高考 <strong>57分</strong> 算是中等发挥。理综的时间分配压力下，物理大题确实是最容易被挤占的。</p>
+            <p>生物 <strong>55分</strong> 则是一份踏实的答卷。从五月模考的低谷（41分）恢复到了绵阳二诊时期的水平（56分），基础知识的回归让它没有拖后腿。</p>
+
+            <h2>🏁 写在最后</h2>
+            <p>510 分，121897 名。这不是一个能上清北的分数，但这是一个真实的高三学生的成绩单——有翻盘的狂喜（化学！），有稳如磐石的底气（英语），也有小小的遗憾（物理）。每一科的成绩曲线都是这半年走过的路。</p>
+            <p>感谢那个在深夜刷理综卷的自己。高中三年，到此杀青。🎬</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="historyModal">
+        <div class="modal-content">
+            <h2 id="modalTitle" style="color: var(--color-primary); margin-top: 0; font-weight: 700; font-size: 1.4rem;">学科全记录</h2>
+            <div id="modalData" style="line-height: 1.8; margin: 20px 0; font-size: 1.05rem;"></div>
+            <div class="close-btn" onclick="closeModal()">关 闭</div>
+        </div>
+    </div>
+
+    <script src="../../scripts/db.js"></script>
+</body>
+</html>

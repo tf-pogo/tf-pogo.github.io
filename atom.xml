@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tf-pogo.github.io</id>
     <title>Pogo个人主页</title>
-    <updated>2026-05-16T00:00:00.000Z</updated>
+    <updated>2026-06-08T00:00:00.000Z</updated>
     <generator>Pogo</generator>
     <link rel="alternate" href="https://tf-pogo.github.io"/>
     <link rel="self" href="https://tf-pogo.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://tf-pogo.github.io/images/avatar.png</logo>
     <icon>https://tf-pogo.github.io/favicon.ico</icon>
     <rights>All rights reserved 2026, Pogo个人主页</rights>
+    <entry>
+        <title type="html"><![CDATA[高考成绩：终局之战 🎓]]></title>
+        <id>https://tf-pogo.github.io/post/gao-kao/</id>
+        <link href="https://tf-pogo.github.io/post/gao-kao/"/>
+        <updated>2026-06-08T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[总分510，省排121897。英语119扛大旗，化学76惊天翻盘！点击学科查看三年完整轨迹。]]></summary>
+    </entry>
     <entry>
         <title type="html"><![CDATA[五月模考复盘：物理的高光时刻 ⚡]]></title>
         <id>https://tf-pogo.github.io/post/wu-yue-mo-kao/</id>
