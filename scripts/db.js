@@ -1,15 +1,6 @@
 /* =========================================
-   全站深色模式记忆感应器
-   ========================================= */
-(function() {
-    // 网页一加载，立刻检查 localStorage 里的主题设置
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-    }
-})();
-
-/* =========================================
-   Pogo 的专属成绩数据库
+   全站成绩数据库 + 学科轨迹弹窗
+   注意：主题由 <head> 里的内联脚本负责，这里不再处理深色模式。
    ========================================= */
 const scoreDB = {
     '语文': { '绵阳二诊': 91, '成都三诊': 80, '德阳三诊': 82, '五月模考': 86, '高考': 96 },
@@ -20,120 +11,90 @@ const scoreDB = {
     '生物': { '绵阳二诊': 56, '成都三诊': 50, '德阳三诊': 60, '五月模考': 41, '高考': 55 }
 };
 
-// =========================================
-// 核心逻辑：自动计算趋势并生成时间轴
-// =========================================
-function openModal(subject) {
-    const data = scoreDB[subject];
-    const modal = document.getElementById('historyModal');
-    document.getElementById('modalTitle').innerText = `${subject} · 历次成绩全记录`;
+var lastFocused = null;
 
-    let htmlStr = '';
-    let prevScore = null;
+function openModal (subject) {
+    var data = scoreDB[subject];
+    if (!data) return;
+    var modal = document.getElementById('historyModal');
+    if (!modal) return;
 
-    // 自动遍历数据库里该科目的所有考试成绩
-    for (const [examName, score] of Object.entries(data)) {
-        let trend = '';
-        // 自动计算和上一次考试的分差
+    document.getElementById('modalTitle').textContent = subject + ' · 历次成绩全记录';
+
+    var htmlStr = '';
+    var prevScore = null;
+
+    Object.keys(data).forEach(function (examName) {
+        var score = data[examName];
+        var trend = '';
         if (prevScore !== null) {
-            let diff = score - prevScore;
-            if (diff > 0) trend = `<span class="trend-up" style="margin-left:10px;">(↑ 进步 ${diff} 分 🔥)</span>`;
-            else if (diff < 0) trend = `<span class="trend-down" style="margin-left:10px;">(↓ 退步 ${Math.abs(diff)} 分 ⚠️)</span>`;
-            else trend = `<span style="color: var(--text-tertiary); margin-left:10px;">(持平 🛡️)</span>`;
+            var diff = score - prevScore;
+            if (diff > 0) {
+                trend = '<span class="trend-up" style="margin-left:10px;">(↑ 进步 ' + diff + ' 分 🔥)</span>';
+            } else if (diff < 0) {
+                trend = '<span class="trend-down" style="margin-left:10px;">(↓ 退步 ' + Math.abs(diff) + ' 分 ⚠️)</span>';
+            } else {
+                trend = '<span style="color: var(--text-tertiary); margin-left:10px;">(持平 🛡️)</span>';
+            }
         }
-
-        // 生成每一行的数据
-        htmlStr += `
-            <div style="padding: 12px 0; border-bottom: 1px dashed rgba(150,150,150,0.3); display: flex; justify-content: space-between; align-items: center;">
-                <span style="color: var(--text-secondary);">${examName}</span>
-                <div>
-                    <strong style="font-size: 1.2em; color: var(--color-primary);">${score} 分</strong>
-                    ${trend}
-                </div>
-            </div>`;
+        htmlStr += '<div style="padding: 12px 0; border-bottom: 1px dashed rgba(150,150,150,0.3); display: flex; justify-content: space-between; align-items: center;">' +
+            '<span style="color: var(--text-secondary);">' + examName + '</span>' +
+            '<div><strong style="font-size: 1.2em; color: var(--color-primary);">' + score + ' 分</strong>' + trend + '</div>' +
+            '</div>';
         prevScore = score;
-    }
+    });
 
-    // 高考结束了，给每个学科弹窗加上毕业祝福
     if (Object.keys(data).length >= 5) {
-        htmlStr += `<div style="text-align: center; margin-top: 15px; color: var(--color-primary); font-weight: 600;">高中三年，到此杀青。🎬</div>`;
-    } else if (Object.keys(data).length >= 3) {
-        htmlStr += `<div style="text-align: center; margin-top: 15px; color: var(--color-primary); font-weight: 600;">高考必胜！🚀</div>`;
+        htmlStr += '<div style="text-align: center; margin-top: 15px; color: var(--color-primary); font-weight: 600;">高中三年，到此杀青。🎬</div>';
     }
 
     document.getElementById('modalData').innerHTML = htmlStr;
+
+    lastFocused = document.activeElement;
     modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    // 等 .active 的 visibility 从 hidden 切成 visible 再聚焦，否则 focus() 会被浏览器忽略
+    var closeBtn = modal.querySelector('.close-btn');
+    if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 60);
 }
 
-function closeModal() {
-    document.getElementById('historyModal').classList.remove('active');
+function closeModal () {
+    var modal = document.getElementById('historyModal');
+    if (!modal || !modal.classList.contains('active')) return;
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+    lastFocused = null;
 }
 
-// 点击背景也可以关闭弹窗
-window.onclick = function(event) {
-    const modal = document.getElementById('historyModal');
-    if (event.target === modal) closeModal();
-}
-/* =========================================
-   Pogo 的文章索引库 (以后新文章写在这里即可！)
-   ========================================= */
-const articleList = [
-    {
-        title: "高考成绩：终局之战 🎓",
-        date: "2026-06-08",
-        desc: "总分510，省排121897。点击学科查看三年完整轨迹！",
-        link: "./post/gao-kao/index.html"
-    },
-    {
-        title: "五月模考复盘：物理的高光时刻 ⚡",
-        date: "2026-05-16",
-        desc: "物理班排第4！点击查看最新数据对冲",
-        link: "./post/wu-yue-mo-kao/index.html"
-    },
-    // ... 下面保留你之前的成都三诊、德阳三诊等数据 ...
-    {
-        title: "成都三诊：冰火两重天的成绩单 🔥",
-        date: "2026-05-02",
-        desc: "英语班排第2，快来看轨迹",
-        link: "./post/cheng-du-san-zhen/index.html"
-    },
-    {
-        title: "德阳三诊成绩复盘 📊",
-        date: "2026-05-01",
-        desc: "点击学科查看与绵阳二诊的对比",
-        link: "./post/gao-san-san-zhen/index.html"
-    },
-    {
-        title: "绵阳二诊成绩复盘 & 学科追踪",
-        date: "2026-05-01",
-        desc: "内含可交互轨迹分析",
-        link: "./post/mian-yang-er-zhen/index.html"
-    },
-    // 👆 以后写了新文章，只需要在这里复制粘贴加大括号就行了！
-];
-/* =========================================
-   Pogo 的懒人魔法：终极防错版本
-   ========================================= */
-/* =========================================
-   Pogo 的懒人魔法：即刻执行版 (绝对生效)
-   ========================================= */
-(function() {
-    // 立即寻找页面里所有需要抢救的错位 td
-    const oldSubjectCells = document.querySelectorAll('td.subject-link');
+/* 点遮罩关闭 */
+document.addEventListener('click', function (event) {
+    var modal = document.getElementById('historyModal');
+    if (modal && event.target === modal) closeModal();
+});
 
-    // 给控制台打个报告，你可以按 F12 看看它抓到了几个
-    console.log(`[Pogo专属修复机器人] 滴滴，扫描到 ${oldSubjectCells.length} 个老表格，正在执行物理切割...`);
+/* Esc 关闭 + Tab 焦点循环 */
+document.addEventListener('keydown', function (event) {
+    var modal = document.getElementById('historyModal');
+    if (!modal || !modal.classList.contains('active')) return;
 
-    oldSubjectCells.forEach(td => {
-        // 1. 把里面的文字和点击事件拿出来
-        const content = td.innerHTML;
-        const clickEvent = td.getAttribute('onclick') || '';
+    if (event.key === 'Escape') {
+        closeModal();
+        return;
+    }
+    if (event.key !== 'Tab') return;
 
-        // 2. 彻底扒掉 td 的属性
-        td.removeAttribute('class');
-        td.removeAttribute('onclick');
-
-        // 3. 重生为完美的居中药丸！
-        td.innerHTML = `<span class="subject-link" style="display: inline-flex;" onclick="${clickEvent}">${content}</span>`;
-    });
-})();
+    var focusables = modal.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])');
+    if (!focusables.length) return;
+    var first = focusables[0];
+    var last = focusables[focusables.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+    }
+});

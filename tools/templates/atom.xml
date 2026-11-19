@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
+  <id>{{SITE}}/</id>
+  <title>{{SITE_NAME}}</title>
+  <subtitle>破狗 Pogo 的个人主页 —— 高考复盘、折腾记录与日常。</subtitle>
+  <updated>{{UPDATED}}</updated>
+  <generator uri="{{SITE}}/">pogo-build</generator>
+  <link rel="alternate" type="text/html" href="{{SITE}}/"/>
+  <link rel="self" type="application/atom+xml" href="{{SITE}}/atom.xml"/>
+  <author><name>Pogo</name><uri>{{SITE}}/</uri></author>
+  <logo>{{SITE}}/images/icon-512.webp</logo>
+  <icon>{{SITE}}/favicon.ico</icon>
+  <rights>© 2026 Pogo</rights>
+{{ENTRIES}}
+</feed>

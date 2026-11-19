@@ -34,7 +34,7 @@
     --separator: rgba(60, 60, 67, 0.08);
 }
 
-body.dark-mode {
+html.dark {
     --color-primary: #0A84FF;
     --color-primary-hover: #409CFF;
 
@@ -209,7 +209,7 @@ body {
     transition: transform 0.1s ease;
 }
 
-body.dark-mode .menu:hover {
+html.dark .menu:hover {
     box-shadow:
         0 6px 20px rgba(0, 0, 0, 0.3),
         0 1px 3px rgba(0, 0, 0, 0.15);
@@ -252,7 +252,7 @@ body.dark-mode .menu:hover {
     border-color: rgba(255, 255, 255, 0.7);
 }
 
-body.dark-mode .post a:hover {
+html.dark .post a:hover {
     box-shadow:
         0 8px 28px rgba(0, 0, 0, 0.35),
         0 2px 6px rgba(0, 0, 0, 0.2);
@@ -381,7 +381,7 @@ body.dark-mode .post a:hover {
 .score-table tbody tr:hover {
     background: rgba(0, 122, 255, 0.04);
 }
-body.dark-mode .score-table tbody tr:hover {
+html.dark .score-table tbody tr:hover {
     background: rgba(255, 255, 255, 0.03);
 }
 
@@ -433,12 +433,15 @@ body.dark-mode .score-table tbody tr:hover {
     align-items: center;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    /* visibility 延时 0.3s 变 hidden：淡出结束后才真正隐藏，但打开时立即可见，
+       否则 .active 刚加上时元素仍是 hidden，focus() 会被浏览器忽略 */
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
     z-index: 9999;
 }
 .modal-overlay.active {
     opacity: 1;
     visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
 
 .modal-content {
@@ -672,3 +675,116 @@ body.dark-mode .score-table tbody tr:hover {
 .site-description  { animation-delay: 0.28s; }
 .menu              { animation-delay: 0.40s; }
 .post a            { animation-delay: 0.52s; }
+
+/* =========================================
+   16. 可访问性与运行时修补 (2026-11)
+   ========================================= */
+
+/* 内联 SVG 图标（替代 remixicon 图标字体） */
+.ico {
+    width: 1.05em;
+    height: 1.05em;
+    fill: currentColor;
+    vertical-align: -0.15em;
+    flex: none;
+}
+
+/* 头像改成真按钮：去掉 UA 默认外观 */
+button.avatar-wrapper {
+    padding: 0;
+    border: 0;
+    background: none;
+    display: block;
+    appearance: none;
+    -webkit-appearance: none;
+    color: inherit;
+}
+
+/* 键盘焦点可见 */
+:where(a, button, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 14px;
+}
+
+/* 跳转链接（键盘用户跳过导航） */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 999;
+    padding: 10px 18px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 0 0 12px 0;
+    text-decoration: none;
+    font-weight: 600;
+}
+.skip-link:focus { left: 0; }
+
+/* 尊重系统的减少动效偏好：关掉极光呼吸与入场动画 */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+    body { animation: none !important; }
+}
+
+/* 文章正文字号在窄屏略放大，长文更好读 */
+@media (max-width: 560px) {
+    .article-content { font-size: 1.02rem; }
+}
+
+/* 表格在窄屏可横向滚动，而不是撑破玻璃卡片 */
+@media (max-width: 560px) {
+    .score-table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+
+/* 弹窗：小屏内边距收紧 */
+@media (max-width: 480px) {
+    .modal-content { padding: 26px 20px !important; max-height: 88vh; overflow-y: auto; }
+}
+
+
+/* =========================================
+   17. <button> 基元、弹窗滚动锁
+   ========================================= */
+button.close-btn,
+button.subject-link {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+}
+button.subject-link {
+    border: 0;
+    text-align: center;
+}
+button.subject-link:hover {
+    background: var(--color-primary);
+    color: #fff;
+}
+button.close-btn {
+    text-align: center;
+}
+body.modal-open {
+    overflow: hidden;
+}
+
+
+/* =========================================
+   18. 窄屏：卡片元信息不把日期切两半
+   ========================================= */
+.post-info {
+    flex-wrap: wrap;
+    row-gap: 4px;
+}
+.post-info > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}

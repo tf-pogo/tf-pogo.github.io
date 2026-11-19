@@ -1,0 +1,21 @@
+{
+  "name": "Pogo个人主页",
+  "short_name": "Pogo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e8f0fe",
+  "theme_color": "#007AFF",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icon-512.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+  <entry>
+    <title type="html"><![CDATA[{{HEADING}}]]></title>
+    <id>{{URL}}</id>
+    <link rel="alternate" type="text/html" href="{{URL}}"/>
+    <updated>{{DATE}}T00:00:00+08:00</updated>
+    <published>{{DATE}}T00:00:00+08:00</published>
+    <author><name>Pogo</name><uri>{{SITE}}/</uri></author>
+{{CATEGORIES}}
+    <summary type="html"><![CDATA[{{DESC}}]]></summary>
+  </entry>

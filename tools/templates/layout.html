@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{DESC}}" />
+    <title>{{TITLE}} - Pogo个人主页</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+<!--build:sprite-->
+{{SPRITE}}
+<!--/build:sprite-->
+    <main class="glass-container {{CLASS}}">
+
+        <a href="/" class="back-btn">
+            <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow-left-line"></use></svg> 返回首页
+        </a>
+
+        <h1 class="site-title" style="font-size: 1.8rem; margin: 0 0 5px;">{{H1}}</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 30px;">{{SUB}}</p>
+
+{{BODY}}
+
+    </main>
+</body>
+</html>

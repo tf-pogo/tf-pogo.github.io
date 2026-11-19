@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="404 — 页面已失联" />
-    <title>404 - 页面已失联 | Pogo</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/main.css">
+    <meta name="robots" content="noindex" />
+    <meta name="description" content="404 — 这个页面被 Pogo 卸载了" />
+    <title>404 · 页面已失联 | Pogo</title>
+    <link rel="stylesheet" href="/styles/main.css">
     <style>
         .error-container {
             padding: 80px 40px !important;
@@ -14,10 +14,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
-
         .error-code {
             font-size: clamp(6rem, 15vw, 10rem);
             font-weight: 700;
@@ -27,7 +27,6 @@
             color: var(--text-primary);
             animation: float 3.5s ease-in-out infinite;
         }
-
         .error-title {
             font-size: clamp(1.4rem, 4vw, 2rem);
             font-weight: 600;
@@ -35,46 +34,68 @@
             margin: 20px 0 12px;
             color: var(--text-primary);
         }
-
         .error-desc {
             font-size: 1rem;
             line-height: 1.7;
             color: var(--text-secondary);
             max-width: 420px;
-            margin-bottom: 44px;
-            font-weight: 400;
+            margin-bottom: 40px;
         }
-
+        .error-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
         .rescue-btn {
-            height: 56px !important;
-            padding: 0 36px !important;
-            font-size: 1rem !important;
-            background: var(--color-primary) !important;
-            color: #fff !important;
-            border-radius: 100px !important;
-            border: none !important;
-            font-weight: 500 !important;
-            box-shadow: 0 4px 16px rgba(0, 122, 255, 0.3) !important;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            height: 54px;
+            padding: 0 32px;
+            display: inline-flex;
+            align-items: center;
+            font-size: 1rem;
+            background: var(--color-primary);
+            color: #fff;
+            border-radius: 100px;
+            font-weight: 500;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(0, 122, 255, 0.3);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-        .rescue-btn:hover {
-            transform: translateY(-3px) !important;
-            box-shadow: 0 8px 28px rgba(0, 122, 255, 0.4) !important;
+        .rescue-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0, 122, 255, 0.4); }
+        .rescue-btn:active { transform: scale(0.97); }
+        .ghost-btn {
+            height: 54px;
+            padding: 0 28px;
+            display: inline-flex;
+            align-items: center;
+            font-size: 1rem;
+            border-radius: 100px;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-primary);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: transform 0.25s ease;
         }
-        .rescue-btn:active { transform: scale(0.97) !important; }
+        .ghost-btn:hover { transform: translateY(-2px); }
+        @media (prefers-reduced-motion: reduce) {
+            .error-code { animation: none; }
+        }
     </style>
 </head>
 <body>
-    <div class="glass-container error-container">
-        <h1 class="error-code">404</h1>
-        <h2 class="error-title">该网页已被 Pogo 熟练地卸载</h2>
+    <main class="glass-container error-container">
+        <p class="error-code" aria-hidden="true">404</p>
+        <h1 class="error-title">该网页已被 Pogo 熟练地卸载</h1>
         <p class="error-desc">
             或者…你可能不小心走进了理综最后一道大题的草稿纸里。这里除了虚无，连一根辅助线都没有。
         </p>
-
-        <a href="./index.html" class="menu rescue-btn">
-            <i class="ri-rocket-2-fill"></i> 紧急撤离回主页
-        </a>
-    </div>
+        <div class="error-actions">
+            <a href="/" class="rescue-btn">🚀 紧急撤离回主页</a>
+            <a href="/archives/" class="ghost-btn">看看都写了什么</a>
+        </div>
+    </main>
 </body>
 </html>
